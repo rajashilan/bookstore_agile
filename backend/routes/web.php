@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\AdventureComponent;
+use App\Http\Livewire\RomanceComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use App\Http\Livewire\AdventureComponent;
 |
 */
 Route::get('/adventure', AdventureComponent::class);
+Route::get('/romance', RomanceComponent::class);
 
 // Route::get('/', function () {
 //     return view('welcome');
