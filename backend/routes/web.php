@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\MysteryComponent;
+use App\Http\Livewire\HorrorComponent;
 
 /*php
 |--------------------------------------------------------------------------
@@ -14,8 +15,10 @@ use App\Http\Livewire\MysteryComponent;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/mystery', MysteryComponent::class);
+
+Route::get('/horror', HorrorComponent::class);
