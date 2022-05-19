@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <!-- <div class="card">
+            <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
@@ -16,8 +16,8 @@
 
                     {{ __('You are logged in!') }}
                 </div>
-            </div> -->
-            <div class="row">
+            </div>
+            <!-- <div class="row">
                 <div class="col-md-3">
                     <div class="row">
                         <label>
@@ -43,7 +43,7 @@
 
             <div class="row" style="padding: 20px">
                 <input type="date" class="form-control">
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
