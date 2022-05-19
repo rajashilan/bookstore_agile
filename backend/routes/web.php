@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\AdventureComponent;
 use App\Http\Livewire\RomanceComponent;
 use App\Http\Livewire\ChildrenComponent;
+use App\Http\Livewire\SciFiComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use App\Http\Livewire\ChildrenComponent;
 Route::get('/adventure', AdventureComponent::class);
 Route::get('/romance', RomanceComponent::class);
 Route::get('/children', ChildrenComponent::class);
+Route::get('/sci-fi', SciFiComponent::class);
 
 // Route::get('/', function () {
 //     return view('welcome');
