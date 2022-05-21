@@ -34,7 +34,7 @@
                   @if ($books)
                       @foreach ($books as $row)
                       <div style='text-align:center'>
-                        <img src={{$row->picture}} style='display:block; margin:auto; width:150px; height:250px; border-radius:20px' />
+                        <img src="{{asset('assets/uploaded_images/books')}}/{{$row->image}}" style='display:block; margin:auto; width:150px; height:250px; border-radius:20px' />
                         <h6 class='font-genre' style='font-size:25px; height:60px'>{{$row->title}}</h6>
                         <h6 class='font-genre' style='font-size:15px'>{{$row->author}}</h6>
                         <h6 class='font-genre' style='font-size:20px'>RM {{$row->retail_price}}</h6>
