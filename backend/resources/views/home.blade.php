@@ -38,7 +38,7 @@
             <a href="#" class="navbar-icons-link">
               <img src="images/personIcon@2x.png" class="navbar-icons" />
             </a>
-                        <a href="#" class="navbar-icons-link">
+                        <a href="/logout" class="navbar-icons-link">
               <img src="images/logoutIcon@2x.png" class="navbar-icons" />
             </a>
           </div>
@@ -76,7 +76,7 @@
             <a href="#" class="navbar-icons-link">
               <img src="images/cartIcon@2x.png" class="navbar-icons" />
             </a>
-                        <a href="#" class="navbar-icons-link">
+                        <a href="/logout" class="navbar-icons-link">
               <img src="images/logoutIcon@2x.png" class="navbar-icons" />
             </a>
           </div>
@@ -114,7 +114,7 @@
               <img src="images/personIcon@2x.png" class="navbar-icons" />
             </a>
           </div>
-          <a class="navbar-primary-button">Sign Up</a>
+          <a href="/signup" class="navbar-primary-button">Sign Up</a>
         </div>
         @endif
         <!-- end of navbar -->

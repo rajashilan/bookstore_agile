@@ -15,12 +15,27 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
+// Route::get('/home', function () {
+//     return view('home');
+// });
+
+Route::get('/', [UserController::class, 'home']);
+
+Route::get('/signup', function () {
+    return view('auth.register');
 });
 
-Route::get('/loginTest', [UserController::class, 'login']);
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::get('/home', [UserController::class, 'login']);
+Route::get('/logout', [UserController::class, 'logout']);
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
