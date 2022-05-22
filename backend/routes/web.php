@@ -10,6 +10,8 @@ use App\Http\Livewire\SciFiComponent;
 use App\Http\Livewire\AdminAddBookComponent;
 
 /*php
+use App\Http\Controllers\UserController;
+
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -19,10 +21,6 @@ use App\Http\Livewire\AdminAddBookComponent;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/mystery', MysteryComponent::class);
 
@@ -37,3 +35,28 @@ Route::get('/children', ChildrenComponent::class);
 Route::get('/sci-fi', SciFiComponent::class);
 
 Route::get('admin-addbook', AdminAddBookComponent::class)->name('addbook');
+
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+// Route::get('/home', function () {
+//     return view('home');
+// });
+
+Route::get('/', [UserController::class, 'home']);
+
+Route::get('/signup', function () {
+    return view('auth.register');
+});
+
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::get('/home', [UserController::class, 'login']);
+Route::get('/logout', [UserController::class, 'logout']);
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
