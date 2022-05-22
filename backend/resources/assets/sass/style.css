@@ -348,6 +348,9 @@ input[type="number"] {
 }
 
 .homepage-categories-link-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   height: auto;
   width: auto;
   margin: 0;
@@ -435,4 +438,4 @@ input[type="number"] {
   font-weight: 300;
   margin: 0;
 }
-/*# sourceMappingURL=app.css.map */
+/*# sourceMappingURL=style.css.map */

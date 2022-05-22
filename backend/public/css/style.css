@@ -1,6 +1,6 @@
 html {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-size: 16px;
   background-color: #fbf7ee;
   overflow: scroll;
@@ -11,7 +11,7 @@ html {
 ::after,
 ::before {
   -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
@@ -187,8 +187,8 @@ input[type="number"] {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 0.3125rem;
   border: 1px solid #c5c5c5;
 }
@@ -223,7 +223,7 @@ input[type="number"] {
   max-height: 19.5rem;
   margin: 4.25rem 10.875rem 0 10.875rem;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border: none;
   border-radius: 0.3125rem;
 }
@@ -242,9 +242,9 @@ input[type="number"] {
 
 .homepage-mySlides-fade {
   -webkit-animation-name: fade;
-          animation-name: fade;
+  animation-name: fade;
   -webkit-animation-duration: 2.5s;
-          animation-duration: 2.5s;
+  animation-duration: 2.5s;
 }
 
 @-webkit-keyframes fade {
@@ -272,7 +272,7 @@ input[type="number"] {
   max-height: 12.5rem;
   width: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .homepage-mySlides-dot {
@@ -300,13 +300,13 @@ input[type="number"] {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   margin: 2.5rem 0;
   width: 100%;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .homepage-categories-container {
@@ -348,6 +348,7 @@ input[type="number"] {
 }
 
 .homepage-categories-link-img {
+  display: flex;
   height: auto;
   width: auto;
   margin: 0;
@@ -356,8 +357,8 @@ input[type="number"] {
 .homepage-cards-main-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(170px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  -ms-grid-columns: (minmax(170px, 1fr)) [auto-fit];
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   grid-auto-rows: 200px;
   grid-gap: 110px;
   margin: 1.25rem 3.75rem 1.25rem 3.75rem;
@@ -380,7 +381,7 @@ input[type="number"] {
   width: 6.25rem;
   height: 6.25rem;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-bottom: 0.5rem;
 }
 
@@ -435,4 +436,4 @@ input[type="number"] {
   font-weight: 300;
   margin: 0;
 }
-/*# sourceMappingURL=app.css.map */
+/*# sourceMappingURL=style.css.map */

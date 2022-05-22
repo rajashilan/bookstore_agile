@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
@@ -144,32 +144,42 @@
         <div class="homepage-categories-main-container">
           <div class="homepage-categories-container">
             <div class="homepage-categories-item-container">
+               <a class="homepage-categories-link-img" href="/horror">
               <img src="/images/horrorIcon@2x.png" alt="" class="homepage-categories-icon">
               <p class="homepage-categories-text">Horror</p>
+               </a>
             </div>
           </div>
                     <div class="homepage-categories-container">
             <div class="homepage-categories-item-container">
+               <a class="homepage-categories-link-img" href="/mystery">
               <img src="/images/mysteryIcon@2x.png" alt="" class="homepage-categories-icon">
               <p class="homepage-categories-text">Mystery</p>
+               </a>
             </div>
           </div>
                     <div class="homepage-categories-container">
             <div class="homepage-categories-item-container">
+              <a class="homepage-categories-link-img" href="/romance">
               <img src="/images/romanceIcon@2x.png" alt="" class="homepage-categories-icon">
               <p class="homepage-categories-text">Romance</p>
+               </a>
             </div>
           </div>
                     <div class="homepage-categories-container">
             <div class="homepage-categories-item-container">
+              <a class="homepage-categories-link-img" href="/adventure">
               <img src="/images/adventureIcon@2x.png" alt="" class="homepage-categories-icon">
               <p class="homepage-categories-text">Adventure</p>
+               </a>
             </div>
           </div>
                     <div class="homepage-categories-container">
             <div class="homepage-categories-item-container">
+              <a class="homepage-categories-link-img" href="/scifi">
               <img src="/images/scifiIcon@2x.png" alt="" class="homepage-categories-icon">
               <p class="homepage-categories-text">Sci-Fi</p>
+              </a>
             </div>
           </div>
           <a href="#" class="homepage-categories-link">See all</a>
