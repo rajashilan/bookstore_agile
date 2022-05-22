@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\MysteryComponent;
+use App\Http\Livewire\HorrorComponent;
 use App\Http\Livewire\AdventureComponent;
 use App\Http\Livewire\RomanceComponent;
 use App\Http\Livewire\ChildrenComponent;
 use App\Http\Livewire\SciFiComponent;
 use App\Http\Livewire\AdminAddBookComponent;
-use App\Http\Livewire\MysteryComponent;
-use App\Http\Livewire\HorrorComponent;
 
 /*
 |--------------------------------------------------------------------------
