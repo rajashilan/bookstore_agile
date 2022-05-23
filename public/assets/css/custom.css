@@ -1,0 +1,16 @@
+<<<<<<< HEAD:public/assets/css/custom.css
+.slider{
+    display: flex;
+}
+
+.slider .value{
+    margin-left: 5px;
+=======
+.slider{
+    display: flex;
+}
+
+.slider .value{
+    margin-left: 5px;
+>>>>>>> main:backend/public/assets/css/custom.css
+}
