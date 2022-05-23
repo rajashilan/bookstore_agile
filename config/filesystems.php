@@ -32,7 +32,12 @@ return [
 
         'local' => [
             'driver' => 'local',
+<<<<<<< HEAD:config/filesystems.php
             'root' => storage_path('app'),
+=======
+            //'root' => storage_path('app'),
+            'root' => public_path('assets/uploaded_images'),
+>>>>>>> main:backend/config/filesystems.php
             'throw' => false,
         ],
 
