@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
+<<<<<<< HEAD
 @section('content')
 <div class="homepage-slideshow-container">
+=======
+        <title>Testing commit</title>
+>>>>>>> main
 
 <div class="homepage-mySlides homepage-mySlides-fade">
     <img class="homepage-mySlides-img" src="images/sample_image_2.jpg">
