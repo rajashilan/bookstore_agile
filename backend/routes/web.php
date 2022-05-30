@@ -8,9 +8,10 @@ use App\Http\Livewire\RomanceComponent;
 use App\Http\Livewire\ChildrenComponent;
 use App\Http\Livewire\SciFiComponent;
 use App\Http\Livewire\AdminAddBookComponent;
+use App\Http\Controllers\UserController;
 
 /*php
-use App\Http\Controllers\UserController;
+
 
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,12 +41,6 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
-Route::get('/home', function () {
-    return view('home');
-});
-
-=======
 // Route::get('/home', function () {
 //     return view('home');
 // });
@@ -63,7 +58,6 @@ Route::get('/login', function () {
 Route::get('/home', [UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logout']);
 
->>>>>>> main
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
