@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\MysteryComponent;
 use App\Http\Livewire\HorrorComponent;
@@ -61,3 +62,4 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::post('addtocart/{isbn}', [CartController::class, 'addtocart']);
