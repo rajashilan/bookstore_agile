@@ -8,9 +8,9 @@ use App\Http\Livewire\RomanceComponent;
 use App\Http\Livewire\ChildrenComponent;
 use App\Http\Livewire\SciFiComponent;
 use App\Http\Livewire\AdminAddBookComponent;
-
-/*php
 use App\Http\Controllers\UserController;
+/*php
+
 
 |--------------------------------------------------------------------------
 | Web Routes
