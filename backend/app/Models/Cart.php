@@ -13,5 +13,5 @@ class Cart extends Model
         'user_id',
         'isbn',
         'quantity'
-    ]
+    ];
 }
