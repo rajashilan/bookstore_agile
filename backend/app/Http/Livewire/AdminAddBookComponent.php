@@ -42,6 +42,6 @@ class AdminAddBookComponent extends Component
 
     public function render()
     {
-        return view('livewire.admin-add-book-component')->layout('pages.base');
+        return view('livewire.admin-add-book-component')->layout('layouts.base');
     }
 }
