@@ -4,7 +4,7 @@
             <div class='card mt-4'>
                 <div class='card-header'>
                     <h2>Add New Book
-                        <a href="#" class='btn btn-primary btn-sm float-end' style='marginTop:8px'>All Books</a>
+                        <a href="{{ route('listbook') }}" class='btn btn-primary btn-sm float-end' style='marginTop:8px'>All Books</a>
                     </h2>
                 </div>
                 <div class='card-body'>
@@ -73,8 +73,8 @@
                                     <input type="text" id="quantity" name="quantity" class='form-control'  style="width: 60px" wire:model="quantity" oninput="qty.value = this.value" required/>
                                 </div>
                             </div>
-                        </div>   
-                        <div style="text-align: center"> 
+                        </div>
+                        <div style="text-align: center">
                             <button type='submit' class='btn btn-primary px-4 mt-2' >Submit</button>
                         </div>
                     </form>
