@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita52ad5844b4703e89394589c22f8681a
+class ComposerStaticInit2e9d49a4daef980a1536fb81cf9ca5a1
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -188,8 +188,8 @@ class ComposerStaticInita52ad5844b4703e89394589c22f8681a
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
         'Whoops\\' => 
         array (
@@ -333,8 +333,8 @@ class ComposerStaticInita52ad5844b4703e89394589c22f8681a
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -530,6 +530,7 @@ class ComposerStaticInita52ad5844b4703e89394589c22f8681a
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
@@ -664,6 +665,7 @@ class ComposerStaticInita52ad5844b4703e89394589c22f8681a
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'Database\\Factories\\BookFactory' => __DIR__ . '/../..' . '/database/factories/BookFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
@@ -5486,6 +5488,7 @@ class ComposerStaticInita52ad5844b4703e89394589c22f8681a
         'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
         'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
+        'Tests\\Unit\\AddBookTest' => __DIR__ . '/../..' . '/tests/Unit/AddBookTest.php',
         'Tests\\Unit\\ExampleTest' => __DIR__ . '/../..' . '/tests/Unit/ExampleTest.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
         'TheSeer\\Tokenizer\\NamespaceUri' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUri.php',
@@ -5626,10 +5629,10 @@ class ComposerStaticInita52ad5844b4703e89394589c22f8681a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita52ad5844b4703e89394589c22f8681a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita52ad5844b4703e89394589c22f8681a::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInita52ad5844b4703e89394589c22f8681a::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInita52ad5844b4703e89394589c22f8681a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2e9d49a4daef980a1536fb81cf9ca5a1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2e9d49a4daef980a1536fb81cf9ca5a1::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit2e9d49a4daef980a1536fb81cf9ca5a1::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit2e9d49a4daef980a1536fb81cf9ca5a1::$classMap;
 
         }, null, ClassLoader::class);
     }
