@@ -10,6 +10,8 @@
                 <div class='card-body'>
                     @if (Session::has('message'))
                         <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+                    @elseif (Session::has('loginmessage'))
+                    <div class="alert alert-danger" role="alert">{{Session::get('loginmessage')}}</div>
                     @endif
                     <form encType='multipart/form-data' wire:submit.prevent="addBook">
                         <div class="row">
