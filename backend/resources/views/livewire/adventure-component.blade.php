@@ -50,12 +50,12 @@
                           <button type='submit' class='btn btn-sm' style='background-color: #FD833B; color:#fff; border-color:transparent'><span style='margin-right:8px'><i class="fa-solid fa-cart-shopping"></i></span>Add to Cart</button>
                         </form>
                       </div>
-                  @endforeach 
+                  @endforeach
                   @else
                     <div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto'>
                       <h3>No book found in this category</h3>
                     </div>
-                  @endif             
+                  @endif
                 </div>
             </div>
         </div>

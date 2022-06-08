@@ -9,10 +9,14 @@ use App\Http\Livewire\RomanceComponent;
 use App\Http\Livewire\ChildrenComponent;
 use App\Http\Livewire\SciFiComponent;
 use App\Http\Livewire\AdminAddBookComponent;
+
+use App\Http\Livewire\AdminListBookComponent;
+
 use App\Http\Controllers\UserController;
 /*php
 
 
+/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -35,15 +39,13 @@ Route::get('/children', ChildrenComponent::class);
 
 Route::get('/sci-fi', SciFiComponent::class);
 
-Route::get('admin-addbook', AdminAddBookComponent::class)->name('addbook');
+Route::get('/admin-addbook', AdminAddBookComponent::class)->name('addbook');
+
+Route::get('/admin-listbook', AdminListBookComponent::class)->name('listbook');
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
-
-// Route::get('/home', function () {
-//     return view('home');
-// });
 
 Route::get('/', [UserController::class, 'home']);
 
@@ -60,9 +62,15 @@ Route::get('/logout', [UserController::class, 'logout']);
 
 Auth::routes();
 
+
 Route::get('/cart', function () {
     return view('cart');
 });
+
+// Route::get('/home', function () {
+//     return view('home');
+// });
+
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
