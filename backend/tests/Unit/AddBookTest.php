@@ -29,6 +29,7 @@ class AddBookTest extends TestCase
             'updated_at'=>'2022-06-04 07:53:11'
         ]);
 
-        $response->assertStatus(200);
+        $response = $this->followingRedirects()->get('admin-addbook');
+        $response->assertOk();
     }
 }
