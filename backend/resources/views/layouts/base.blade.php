@@ -58,8 +58,38 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/home">{{ __('Home') }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/signup">{{ __('Books') }}</a>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdownCategory" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ __('Categories') }}
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownCategory">
+                                    <li>
+                                        <a class="dropdown-item" href="/horror">
+                                            Horror
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/mystery">
+                                            Mystery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/romance">
+                                            Romance
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/adventure">
+                                            Adventure
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/sci-fi">
+                                            Sci-Fi
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Sales') }}</a>
@@ -79,8 +109,38 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/home">{{ __('Home') }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Books') }}</a>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdownCategory" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ __('Categories') }}
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownCategory">
+                                    <li>
+                                        <a class="dropdown-item" href="/horror">
+                                            Horror
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/mystery">
+                                            Mystery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/romance">
+                                            Romance
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/adventure">
+                                            Adventure
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/sci-fi">
+                                            Sci-Fi
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Sales') }}</a>
