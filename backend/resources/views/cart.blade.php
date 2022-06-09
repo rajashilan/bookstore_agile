@@ -27,7 +27,7 @@
                 <div class="col">
                     <div class="btn-group me-2" role="group" aria-label="First group">
                         <button type="button" onclick="decrement()" class="btn btn-outline-primary">-</button>
-                        <input id=demoInput type=number min=1 max=100 class="form-control" value="1" style="text-align: center;">
+                        <input id=demoInput type=number min=1 max=100 class="form-control" value="1" style="text-align: center; border-radius: 0px !important;">
                         <button type=button onclick="increment()" class="btn btn-outline-primary">+</button>
                     </div>
                 </div>
@@ -42,6 +42,23 @@
 
 
 <script>
+    $("#demoInput").on('keydown keyup change', function (e){
+        if (e.shiftKey || e.ctrlKey || e.altKey) {
+		e.preventDefault();
+        } else {
+        var key = e.keyCode;
+            if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
+                e.preventDefault();
+            }
+        }
+        var val = parseInt(this.value);
+        if(val > 100 || val < 1)
+        {
+            //alert('Wrong range');
+            this.value = Number(val.toString().slice(0, -1));        
+        }
+    })
+
     function increment() {
         document.getElementById('demoInput').stepUp();
         var quantity = $("#demoInput").val()
