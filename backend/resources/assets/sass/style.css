@@ -438,4 +438,35 @@ input[type="number"] {
   font-weight: 300;
   margin: 0;
 }
+
+.cart-container {
+  background-color: white;
+  border: none;
+  border-radius: 0.3125rem;
+  padding: 1rem;
+  margin: 1rem;
+  display: block;
+  position: absolute;
+}
+
+.cart-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.cart-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: auto;
+}
+
+.cart-total {
+  color: #3c3c3c;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0 0 0 auto;
+}
 /*# sourceMappingURL=style.css.map */

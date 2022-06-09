@@ -59,7 +59,7 @@
           </div>
                     <div class="homepage-categories-container">
             <div class="homepage-categories-item-container">
-              <a class="homepage-categories-link-img" href="/scifi">
+              <a class="homepage-categories-link-img" href="/sci-fi">
               <img src="/images/scifiIcon@2x.png" alt="" class="homepage-categories-icon">
               <p class="homepage-categories-text">Sci-Fi</p>
               </a>

@@ -33,22 +33,19 @@ a:active {
 ::-moz-placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #969696;
-  opacity: 1;
-  /* Firefox */
+  opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #969696;
-  opacity: 1;
-  /* Firefox */
+  opacity: 1; /* Firefox */
 }
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #969696;
-  opacity: 1;
-  /* Firefox */
+  opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder {
@@ -327,8 +324,7 @@ input[type=number] {
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
-  -webkit-line-clamp: 3;
-  /* number of lines to show */
+  -webkit-line-clamp: 3; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
 .homepage-cards-rating {
@@ -359,4 +355,30 @@ input[type=number] {
   font-size: 0.875rem;
   font-weight: 300;
   margin: 0;
+}
+
+.cart-container {
+  background-color: white;
+  border: none;
+  border-radius: 0.3125rem;
+  padding: 1rem;
+  margin: 1rem;
+  display: block;
+  position: absolute;
+}
+.cart-header {
+  display: flex;
+}
+.cart-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: auto;
+}
+.cart-total {
+  color: #3c3c3c;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0 0 0 auto;
 }

@@ -86,7 +86,7 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Sales') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/cart" class="navbar-icons-link">
+                                <a href='javascript:;' onclick='show_cart();' class="navbar-icons-link" >
                                     <img style="margin: auto; margin-top: 0.5rem; margin-left: 0.5rem; margin-right: 0.5rem;" src="images/cartIcon@2x.png" class="navbar-icons" />
                                 </a>
                             </li>
@@ -116,11 +116,58 @@
             </div>
         </nav>
 
+        <div class="cart-container hidden" id="cart-container" >
+            <div class="cart-header">
+                <img src="images/cartIcon@2x.png" alt="" class="cart-icon">
+                <h3 class="cart-total">Total: 3 items</h3>
+            </div>
+            <hr>
+            <div class="cart-items">
+                <img src="images/bookImageSample2.jpeg" alt="" class="cart-item-img">
+                <div class="cart-item-details-container">
+                <h3 class="cart-item-title">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</h3>
+                <div class="cart-items-price-container">
+                <h4 class="cart-item-price">RM39.99</h4>
+                <h4 class="cart-item-quantity">Quantity: 1</h4>
+                </div>
+                </div>
+            </div>
+            <div class="cart-items">
+                <img src="images/bookImageSample2.jpeg" alt="" class="cart-item-img">
+                <div class="cart-item-details-container">
+                <h3 class="cart-item-title">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</h3>
+                <div class="cart-items-price-container">
+                <h4 class="cart-item-price">RM39.99</h4>
+                <h4 class="cart-item-quantity">Quantity: 1</h4>
+                </div>
+                </div>
+            </div>
+            <div class="cart-items">
+                <img src="images/bookImageSample2.jpeg" alt="" class="cart-item-img">
+                <div class="cart-item-details-container">
+                <h3 class="cart-item-title">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</h3>
+                <div class="cart-items-price-container">
+                <h4 class="cart-item-price">RM39.99</h4>
+                <h4 class="cart-item-quantity">Quantity: 1</h4>
+                </div>
+                </div>
+            </div>
+            <a href="/cart" class="cart-button">View Cart</a>
+        </div>
+
         <main class="py-4">
             {{$slot}}
             <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
             @livewireScripts
         </main>
     </div>
+
+    <script>
+        function show_cart() {
+            var cart_container = document.getElementById("cart-container");
+            cart_container.classList.toggle("hidden");
+        }
+    </script>
+
 </body>
 </html>

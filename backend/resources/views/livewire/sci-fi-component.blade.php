@@ -30,6 +30,13 @@
                 </div>
             </div>
             <div class='row featured-row' style="padding-bottom:30px">
+              @if (Session::has('message'))
+                <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+              @elseif (Session::has('login_message'))
+                <div class="alert alert-danger" role="alert">{{Session::get('login_message')}}</div>
+              @elseif (Session::has('cart_exist_msg'))
+                <div class="alert alert-warning" role="alert">{{Session::get('cart_exist_msg')}}</div>  
+              @endif
                 <div class='row row-cols-2 row-cols-lg-4 g-2 g-lg-4' >
                   @if ($books)
                       @foreach ($books as $row)
@@ -38,7 +45,10 @@
                         <h6 class='font-genre' style='font-size:25px; height:60px'>{{$row->title}}</h6>
                         <h6 class='font-genre' style='font-size:15px'>{{$row->author}}</h6>
                         <h6 class='font-genre' style='font-size:20px'>RM {{$row->retail_price}}</h6>
-                        <button type='button' class='btn btn-sm' style='background-color: #FD833B; color:#fff; border-color:transparent'><span style='margin-right:8px'><i class="fa-solid fa-cart-shopping"></i></span>Add to Cart</button>
+                        <form action="{{ url('addtocart',$row->isbn) }}" method="POST">
+                          @csrf
+                          <button type='submit' class='btn btn-sm' style='background-color: #fff; color:#000; border:solid 2px #000'><span style='margin-right:8px'><i class="fa-solid fa-cart-shopping"></i></span>Add to Cart</button>
+                        </form>
                       </div>
                   @endforeach 
                   @else
