@@ -11,6 +11,7 @@ use App\Http\Livewire\SciFiComponent;
 use App\Http\Livewire\AdminAddBookComponent;
 use App\Http\Livewire\AdminListBookComponent;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 /*php
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use App\Models\Book;
 
 class UserController extends Controller
 {
@@ -17,7 +18,8 @@ class UserController extends Controller
             $userType = Auth::user()->user_type;
         }
         
-        return view('home', compact('userType', 'userName'));
+        $books = Book::all();
+        return view('home', compact('userType', 'userName', 'books'));
     }
 
     public function logout(){
@@ -27,6 +29,7 @@ class UserController extends Controller
 
     public function home(){
         //dd(Auth::user());
-        return view('home');
+        $books = Book::all();
+        return view('home',['books'=>$books])-> layout('layouts.app');
     }
 }
