@@ -91,6 +91,11 @@
                                             Sci-Fi
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/children">
+                                            Children
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item">
@@ -142,6 +147,11 @@
                                             Sci-Fi
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/children">
+                                            Children
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item">
@@ -153,7 +163,7 @@
                                 </a>
                             </li>
                             @if ((Auth::user()->userType) == "admin")
-                                <li class="nav-item"><a class="nav-link" href="admin-addbook">Add Stock</a></li>
+                                <li class="nav-item"><a class="nav-link" href="admin-listbook">View Stock</a></li>
                             @endif 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
