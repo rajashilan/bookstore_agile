@@ -32,4 +32,8 @@ class UserController extends Controller
         $books = Book::all();
         return view('home',['books'=>$books])-> layout('layouts.app');
     }
+
+    public function editProfile(){
+        
+    }
 }
