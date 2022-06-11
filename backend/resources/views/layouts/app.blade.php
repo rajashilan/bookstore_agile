@@ -58,8 +58,38 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/home">{{ __('Home') }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/signup">{{ __('Books') }}</a>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdownCategory" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ __('Categories') }}
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownCategory">
+                                    <li>
+                                        <a class="dropdown-item" href="/horror">
+                                            Horror
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/mystery">
+                                            Mystery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/romance">
+                                            Romance
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/adventure">
+                                            Adventure
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/sci-fi">
+                                            Sci-Fi
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Sales') }}</a>
@@ -79,8 +109,38 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/home">{{ __('Home') }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Books') }}</a>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdownCategory" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ __('Categories') }}
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownCategory">
+                                    <li>
+                                        <a class="dropdown-item" href="/horror">
+                                            Horror
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/mystery">
+                                            Mystery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/romance">
+                                            Romance
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/adventure">
+                                            Adventure
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/sci-fi">
+                                            Sci-Fi
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Sales') }}</a>
@@ -98,17 +158,35 @@
                                     Hi, {{ Auth::user()->name }}!
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li style="text-align: center;">
+                                        <img style="margin: auto; margin-top: 0.5rem; margin-left: 0.5rem; margin-right: 0.5rem;" src="images/personIcon@2x.png" />
+                                    </li>
+                                        <!-- <li><hr class="dropdown-divider"></li> -->
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item">
+                                            Name: {{ Auth::user()->name }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item">
+                                            Email: {{ Auth::user()->email }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                    </li>
+                                    
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                </div>
+                                </ul>
                             </li>
                         @endguest
                     </ul>

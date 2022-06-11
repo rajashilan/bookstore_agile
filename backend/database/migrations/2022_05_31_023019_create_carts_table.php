@@ -18,7 +18,7 @@ class CreateCartsTable extends Migration
             $table->string('user_id')->default('1');
             $table->string('isbn');
             $table->integer('quantity')->default('1');
-            $table->integer('status')->nullable();
+            $table->boolval('status')->nullable();
             $table->timestamps();
         });
     }
