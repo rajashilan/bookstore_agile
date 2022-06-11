@@ -37,8 +37,10 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-danger mb-2">Delete From Cart</button>
-
+                    <form action="{{ url('deletefromcart', $row['book'][0] -> isbn) }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-danger mb-2">Delete From Cart</button>
+                    </form>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </div>
