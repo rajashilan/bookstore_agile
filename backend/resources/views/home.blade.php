@@ -84,10 +84,14 @@
                   <p class="homepage-cards-text">{{$row->title}}</p>
                   <p class="homepage-cards-text">{{$row->author}}</p>
                   <p class="homepage-cards-text">RM {{$row->retail_price}}</p>
+                  @if ($row -> quantity == 0)
+                          <button type="button" class="btn btn-secondary btn-sm" disabled>Out of Stock</button>
+                  @else
                   <form action="{{ url('addtocart',$row->isbn) }}" method="POST">
                     @csrf
                     <button type='submit' class='btn btn-sm' style='background-color: #FD833B; color:#fff; border-color:transparent'><span style='margin-right:8px'><i class="fa-solid fa-cart-shopping"></i></span>Add to Cart</button>
                   </form>
+                  @endif
                 </div>
               @endforeach 
           @else
