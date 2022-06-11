@@ -24,6 +24,13 @@ class CartController extends Controller
                 $cart->isbn = $isbn;
                 $cart->user_id = $id;
                 $cart->save();
+
+                $book = Book::where('isbn', $isbn)->first();
+                $qtyold = $book->quantity;
+                $qtynew = $qtyold - 1; 
+                $book->quantity = $qtynew;
+                Book::where('isbn',$isbn)->update(array('quantity'=>$qtynew));
+
                 return redirect()->back()->with('message','Added to Cart Successfully!');
             }
         }
@@ -50,7 +57,6 @@ class CartController extends Controller
                 $cartdetails = compact("record", "book");
                 array_push($cartarray, $cartdetails);
             }
-           // dd($cartarray);
             return view('cart',['cartarray'=>$cartarray])-> layout('layouts.app');
         }
         else{
@@ -61,9 +67,22 @@ class CartController extends Controller
     public function editQty(Request $request){
         $id = $request->input('id');
         $qty = $request->input('quantity');
+        $isbn = $request->input('isbn');
         $record = Cart::find($id);
-        $record->quantity = $qty;
+        $record->quantity = abs($qty);
         $record->update();
-        return response()->json(['success'=>$qty]);
+
+        $book = Book::where('isbn', $isbn)->first();
+        $qtyold = $book->quantity;
+        $qtynew = 0;
+        if ($qty > 0){
+            $qtynew = $qtyold - 1; 
+        }
+        else if ($qty < 0){
+            $qtynew = $qtyold + 1;
+        }
+        Book::where('isbn',$isbn)->update(array('quantity'=>$qtynew));
+        return response()->json(['success'=>$qtynew]);
+        
     }
 }

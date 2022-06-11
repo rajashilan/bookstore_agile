@@ -30,8 +30,10 @@
                         <div class="col">
                             <div class="btn-group me-2" role="group" aria-label="First group">
                                 <button type="button" onclick="decrement(this.id)" class="btn btn-outline-primary" id="btnDecrease{{$row['record'] -> id}}">-</button>
-                                <input id="{{$row['record'] -> id}}" type=number min=1 max=100 class="form-control" value="{{$row['record'] -> quantity}}" style="text-align: center; border-radius: 0px !important;">
+                                <input id="{{$row['record'] -> id}}" type=number min=1 max=100 class="form-control" value="{{$row['record'] -> quantity}}" style="text-align: center; border-radius: 0px !important;" readonly>
+                                <input id="{{$row['book'][0] -> isbn}}" type="text" value="{{$row['book'][0] -> isbn}}" style="display: none;">
                                 <button id="btnIncrease{{$row['record'] -> id}}" type=button onclick="increment(this.id)" class="btn btn-outline-primary">+</button>
+                                
                             </div>
                         </div>
                     </div>
@@ -73,25 +75,28 @@
         var inputid = id.replace("btnIncrease", "")
         document.getElementById(inputid).stepUp();
         var quantity = $("#" + inputid).val()
-        editQty(inputid, quantity)
-        console.log($("#" + inputid).val())
-        console.log(inputid)
+        var isbn = $("#" + id).prev().val()
+        editQty(isbn, inputid, quantity)
+        // console.log($("#" + inputid).val())
+        //console.log(isbn)
     }
     function decrement(id) {
         var inputid = id.replace("btnDecrease", "")
         document.getElementById(inputid).stepDown();
-        var quantity = $("#" + inputid).val()
-        editQty(inputid, quantity)
-        console.log($("#" + inputid).val())
-        console.log(inputid)
+        var quantity = -Math.abs($("#" + inputid).val())
+        var isbn = $("#" + id).next().next().val()
+        editQty(isbn, inputid, quantity)
+        //console.log($("#" + inputid).val())
+        //console.log(isbn)
     }
 
-    function editQty(id, quantity){
+    function editQty(isbn, id, quantity){
         let _token   = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
             url: "/editQty",
             type: "POST",
             data: {
+                isbn: isbn,
                 id: id,
                 quantity: quantity,
                 _token: _token
