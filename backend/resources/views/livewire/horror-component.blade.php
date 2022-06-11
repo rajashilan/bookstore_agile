@@ -48,17 +48,27 @@
 
             <!-- book row -->
             <div class='row featured-row' style="padding-bottom:30px">
-                <div class='row row-cols-2 row-cols-lg-4 g-2 g-lg-4' >
+              @if (Session::has('message'))
+                <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+              @elseif (Session::has('login_message'))
+                <div class="alert alert-danger" role="alert">{{Session::get('login_message')}}</div>
+              @elseif (Session::has('cart_exist_msg'))
+                <div class="alert alert-warning" role="alert">{{Session::get('cart_exist_msg')}}</div>  
+              @endif
+                <div class='row row-cols-2 row-cols-lg-4 g-2 g-lg-4'>
                   @if ($books)
-                      @foreach ($books as $row)
+                    @foreach ($books as $row)
                       <div style='text-align:center'>
                         <img src="{{asset('assets/uploaded_images/books')}}/{{$row->image}}" style='display:block; margin:auto; width:200px; height:250px; border-radius:20px' />
                         <h6 class='font-genre' style='font-size:25px; height:60px; color: #000000;'>{{$row->title}}</h6>
                         <h6 class='font-genre' style='font-size:15px; color: #000000'>{{$row->author}}</h6>
                         <h6 class='font-genre' style='font-size:20px; color: #000000'>RM {{$row->retail_price}}</h6>
-                        <button type='button' class='btn btn-sm' style='background-color: #FD833B; color:#fff; border-color:transparent'><span style='margin-right:8px'><i class="fa-solid fa-cart-shopping"></i></span>Add to Cart</button>
+                        <form action="{{ url('addtocart',$row->isbn) }}" method="POST">
+                         @csrf
+                         <button type='submit' class='btn btn-sm' style='background-color: #FD833B; color:#fff; border-color:transparent'><span style='margin-right:8px'><i class="fa-solid fa-cart-shopping"></i></span>Add to Cart</button>
+                        </form>
                       </div>
-                  @endforeach 
+                    @endforeach 
                   @else
                     <div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto'>
                       <h3>No book found in this category</h3>
