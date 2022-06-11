@@ -78,22 +78,25 @@
         document.getElementById(inputid).stepUp();
         var quantity = $("#" + inputid).val()
         var isbn = $("#" + id).prev().val()
-        editQty(isbn, inputid, quantity)
+        editQty(isbn, inputid, quantity, id)
         // console.log($("#" + inputid).val())
         //console.log(isbn)
     }
     function decrement(id) {
         var inputid = id.replace("btnDecrease", "")
-        document.getElementById(inputid).stepDown();
-        var quantity = -Math.abs($("#" + inputid).val())
-        var isbn = $("#" + id).next().next().val()
-        editQty(isbn, inputid, quantity)
+        var currentqty = $("#" + inputid).val()
+        if (currentqty > 1){
+            document.getElementById(inputid).stepDown();
+            var quantity = -Math.abs($("#" + inputid).val())
+            var isbn = $("#" + id).next().next().val()
+            editQty(isbn, inputid, quantity, id)
+        }
         //console.log($("#" + inputid).val())
         //console.log(isbn)
     }
 
-    function editQty(isbn, id, quantity){
-        let _token   = $('meta[name="csrf-token"]').attr('content');
+    function editQty(isbn, id, quantity, btnid){
+        let _token = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
             url: "/editQty",
             type: "POST",
@@ -105,6 +108,25 @@
             },
             success: function(data){
                 console.log(data)
+                console.log(data.qtynew)
+                console.log(data.cartbookqty)
+                if (data.qtynew == 0){
+                    $("#"+btnid).prop("disabled", true);
+                }
+                // else{
+                //     $("#"+btnid).prop("disabled", false);
+                // }
+                else if(data.cartbookqty == 1){
+                    $("#"+btnid).prop("disabled", true);
+                    
+                }
+                else{
+                    $("#btnIncrease"+id).prop("disabled", false);
+                    $("#btnDecrease"+id).prop("disabled", false);
+                }
+                // else{
+                //     $("#"+btnid).removeAttr('disabled');
+                // }
             }
         })
     }

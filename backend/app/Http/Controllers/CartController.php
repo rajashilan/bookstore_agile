@@ -84,6 +84,7 @@ class CartController extends Controller
         $record = Cart::find($id);
         $record->quantity = abs($qty);
         $record->update();
+        $cartbookqty = abs($qty);
 
         $book = Book::where('isbn', $isbn)->first();
         $qtyold = $book->quantity;
@@ -95,7 +96,8 @@ class CartController extends Controller
             $qtynew = $qtyold + 1;
         }
         Book::where('isbn',$isbn)->update(array('quantity'=>$qtynew));
-        return response()->json(['success'=>$qtynew]);
+        $successdata = compact("qtynew", "cartbookqty");
+        return response()->json($successdata);
         
     }
 }
