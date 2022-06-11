@@ -197,39 +197,35 @@
         <div class="cart-container hidden" id="cart-container" >
             <div class="cart-header">
                 <img src="images/cartIcon@2x.png" alt="" class="cart-icon">
-                <h3 class="cart-total">Total: 3 items</h3>
+                @if ($cartarray ?? '')
+                @if (count($cartarray ?? '') > 0)
+                <h3 class="cart-total">Total: {{count($cartarray ?? '')}} items</h3>
+                @else
+                <h3 class="cart-total">Total: 0 item</h3>
+                @endif
+                @else 
+                <h3 class="cart-total">Total: 0 item</h3>
+                @endif
             </div>
             <hr>
+            @if ($cartarray ?? '')
+                @foreach ($cartarray ?? '' as $items)
             <div class="cart-items">
-                <img src="images/bookImageSample2.jpeg" alt="" class="cart-item-img">
+                <img src="{{asset('assets/uploaded_images/books')}}/{{$items['book'][0] -> image}}" alt="" class="cart-item-img">
                 <div class="cart-item-details-container">
-                <h3 class="cart-item-title">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</h3>
+                <h3 class="cart-item-title">{{$items["book"][0] -> title}}</h3>
                 <div class="cart-items-price-container">
-                <h4 class="cart-item-price">RM39.99</h4>
-                <h4 class="cart-item-quantity">Quantity: 1</h4>
+                <h4 class="cart-item-price">RM{{$items["book"][0] -> retail_price}}</h4>
+                <h4 class="cart-item-quantity">Quantity: {{$items['record'] -> quantity}}</h4>
                 </div>
                 </div>
             </div>
-            <div class="cart-items">
-                <img src="images/bookImageSample2.jpeg" alt="" class="cart-item-img">
-                <div class="cart-item-details-container">
-                <h3 class="cart-item-title">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</h3>
-                <div class="cart-items-price-container">
-                <h4 class="cart-item-price">RM39.99</h4>
-                <h4 class="cart-item-quantity">Quantity: 1</h4>
+            @endforeach
+            @else
+                <div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto'>
+                    <h3>No item found in cart! </h3>
                 </div>
-                </div>
-            </div>
-            <div class="cart-items">
-                <img src="images/bookImageSample2.jpeg" alt="" class="cart-item-img">
-                <div class="cart-item-details-container">
-                <h3 class="cart-item-title">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</h3>
-                <div class="cart-items-price-container">
-                <h4 class="cart-item-price">RM39.99</h4>
-                <h4 class="cart-item-quantity">Quantity: 1</h4>
-                </div>
-                </div>
-            </div>
+            @endif
             <a href="/cart" class="cart-button">View Cart</a>
         </div>
 

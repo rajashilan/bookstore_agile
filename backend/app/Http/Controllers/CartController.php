@@ -39,6 +39,19 @@ class CartController extends Controller
         }
     }
 
+    public function deletefromcart(Request $request, $isbn){
+        if(Auth::user()) {
+        $id = Auth::user()->id;
+        if (Cart::where('isbn', $isbn)->where('user_id', $id)->exists()){
+           Cart::where('isbn',$isbn)->where('user_id', $id)->delete();
+           return redirect()->back()->with('message','Deleted from cart successfully!');
+        }
+        }
+        else{
+            return redirect()->back()->with('login_message','Please login to proceed!');
+        }
+    }
+
     public function cart(){
 
         if(Auth::user()) {

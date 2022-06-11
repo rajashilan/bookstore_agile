@@ -73,5 +73,6 @@ Route::get('/cart', [App\Http\Controllers\CartController::class, 'cart']);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('addtocart/{isbn}', [CartController::class, 'addtocart']);
+Route::post('deletefromcart/{isbn}', [CartController::class, 'deletefromcart']);
 
 Route::post('editQty', [CartController::class, 'editQty']);
