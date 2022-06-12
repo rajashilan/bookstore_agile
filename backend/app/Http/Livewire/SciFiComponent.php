@@ -10,6 +10,6 @@ class SciFiComponent extends Component
     public function render()
     {
         $books = DB::select('select * from books where category = "Sci-Fi"');
-        return view('livewire.sci-fi-component',['books'=>$books])->layout('pages.base');
+        return view('livewire.sci-fi-component',['books'=>$books])->layout('layouts.base');
     }
 }

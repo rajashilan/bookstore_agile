@@ -1,123 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <title>Document</title>
-</head>
-<body>
-  <!-- navbar -->
-  @if($userType ?? '')
-  @if($userType == 'admin')
-            <div class="navbar-main-container">
-          <div class="navbar-logo-container">
-            <img src="images/logo@2x.png" class="navbar-logo" />
-          </div>
-          <div class="search-container">
-            <input
-              class="search-bar"
-              type="text"
-                placeholder="Search your Books..."
-            />
-            <img class="search-icon" src="/images/searchIcon@2x.png" alt="">
-          </div>
-          <div class="navbar-menu-container">
-            <a href="#" class="navbar-menu-items">
-              Home
-            </a>
-            <a href="#" class="navbar-menu-items">
-              Books
-            </a>
-            <a href="#" class="navbar-menu-items">
-              Sales
-            </a>
-          </div>
-          <div class="navbar-icons-container">
-            <a href="#" class="navbar-icons-link">
-              <img src="images/personIcon@2x.png" class="navbar-icons" />
-            </a>
-                        <a href="/logout" class="navbar-icons-link">
-              <img src="images/logoutIcon@2x.png" class="navbar-icons" />
-            </a>
-          </div>
-          <a class="navbar-primary-button">Add Books</a>
-        </div>
-        @elseif($userType == 'user')
-                    <div class="navbar-main-container">
-          <div class="navbar-logo-container">
-            <img src="images/logo@2x.png" class="navbar-logo" />
-          </div>
-          <div class="search-container">
-            <input
-              class="search-bar"
-              type="text"
-                placeholder="Search your Books..."
-            />
-            <img class="search-icon" src="/images/searchIcon@2x.png" alt="">
-          </div>
-          <div class="navbar-menu-container">
-            <a href="#" class="navbar-menu-items">
-              Home
-            </a>
-            <a href="#" class="navbar-menu-items">
-              Books
-            </a>
-            <a href="#" class="navbar-menu-items">
-              Sales
-            </a>
-          </div>
-          <div class="navbar-icons-container">
-            <h4 class="navbar-text">Hi, {{$userName}}!</h4>
-                        <a href="#" class="navbar-icons-link">
-              <img src="images/personIcon@2x.png" class="navbar-icons" />
-            </a>
-            <a href="#" class="navbar-icons-link">
-              <img src="images/cartIcon@2x.png" class="navbar-icons" />
-            </a>
-                        <a href="/logout" class="navbar-icons-link">
-              <img src="images/logoutIcon@2x.png" class="navbar-icons" />
-            </a>
-          </div>
-        </div>
-        @endif
-        @else
-                    <div class="navbar-main-container">
-          <div class="navbar-logo-container">
-            <img src="images/logo@2x.png" class="navbar-logo" />
-          </div>
-          <div class="search-container">
-            <input
-              class="search-bar"
-              type="text"
-                placeholder="Search your Books..."
-            />
-            <img class="search-icon" src="/images/searchIcon@2x.png" alt="">
-          </div>
-          <div class="navbar-menu-container">
-            <a href="#" class="navbar-menu-items">
-              Home
-            </a>
-            <a href="#" class="navbar-menu-items">
-              Books
-            </a>
-            <a href="#" class="navbar-menu-items">
-              Sales
-            </a>
-          </div>
-          <div class="navbar-icons-container">
-            <a href="#" class="navbar-icons-link">
-              <img src="images/cartIcon@2x.png" class="navbar-icons" />
-            </a>
-            <a href="#" class="navbar-icons-link">
-              <img src="images/personIcon@2x.png" class="navbar-icons" />
-            </a>
-          </div>
-          <a href="/signup" class="navbar-primary-button">Sign Up</a>
-        </div>
-        @endif
-        <!-- end of navbar -->
+@extends('layouts.app')
+
+@section('content')
 <div class="homepage-slideshow-container">
 
 <div class="homepage-mySlides homepage-mySlides-fade">
@@ -176,7 +59,7 @@
           </div>
                     <div class="homepage-categories-container">
             <div class="homepage-categories-item-container">
-              <a class="homepage-categories-link-img" href="/scifi">
+              <a class="homepage-categories-link-img" href="/sci-fi">
               <img src="/images/scifiIcon@2x.png" alt="" class="homepage-categories-icon">
               <p class="homepage-categories-text">Sci-Fi</p>
               </a>
@@ -186,57 +69,36 @@
         </div>
 
         <h1 class="homepage-title-text">Featured</h1>
+        @if (Session::has('message'))
+          <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+        @elseif (Session::has('login_message'))
+          <div class="alert alert-danger" role="alert">{{Session::get('login_message')}}</div>
+        @elseif (Session::has('cart_exist_msg'))
+          <div class="alert alert-warning" role="alert">{{Session::get('cart_exist_msg')}}</div>  
+        @endif
         <div class="homepage-cards-main-container">
-          <div class="homepage-cards-container">
-            <img src="/images/bookImageSample@2x.png" alt="" class="homepage-cards-img">
-            <p class="homepage-cards-text">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</p>
-            <img src="/images/ratingSample@2x.png" alt="" class="homepage-cards-rating">
-          </div>
-                    <div class="homepage-cards-container">
-            <img src="/images/bookImageSample@2x.png" alt="" class="homepage-cards-img">
-            <p class="homepage-cards-text">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</p>
-            <img src="/images/ratingSample@2x.png" alt="" class="homepage-cards-rating">
-          </div>
-                    <div class="homepage-cards-container">
-            <img src="/images/bookImageSample@2x.png" alt="" class="homepage-cards-img">
-            <p class="homepage-cards-text">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</p>
-            <img src="/images/ratingSample@2x.png" alt="" class="homepage-cards-rating">
-          </div>
-                    <div class="homepage-cards-container">
-            <img src="/images/bookImageSample@2x.png" alt="" class="homepage-cards-img">
-            <p class="homepage-cards-text">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</p>
-            <img src="/images/ratingSample@2x.png" alt="" class="homepage-cards-rating">
-          </div>
-                    <div class="homepage-cards-container">
-            <img src="/images/bookImageSample@2x.png" alt="" class="homepage-cards-img">
-            <p class="homepage-cards-text">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</p>
-            <img src="/images/ratingSample@2x.png" alt="" class="homepage-cards-rating">
-          </div>
-                    <div class="homepage-cards-container">
-            <img src="/images/bookImageSample@2x.png" alt="" class="homepage-cards-img">
-            <p class="homepage-cards-text">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</p>
-            <img src="/images/ratingSample@2x.png" alt="" class="homepage-cards-rating">
-          </div>
-                    <div class="homepage-cards-container">
-            <img src="/images/bookImageSample@2x.png" alt="" class="homepage-cards-img">
-            <p class="homepage-cards-text">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</p>
-            <img src="/images/ratingSample@2x.png" alt="" class="homepage-cards-rating">
-          </div>
-                    <div class="homepage-cards-container">
-            <img src="/images/bookImageSample@2x.png" alt="" class="homepage-cards-img">
-            <p class="homepage-cards-text">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</p>
-            <img src="/images/ratingSample@2x.png" alt="" class="homepage-cards-rating">
-          </div>
-                              <div class="homepage-cards-container">
-            <img src="/images/bookImageSample@2x.png" alt="" class="homepage-cards-img">
-            <p class="homepage-cards-text">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</p>
-            <img src="/images/ratingSample@2x.png" alt="" class="homepage-cards-rating">
-          </div>
-                              <div class="homepage-cards-container">
-            <img src="/images/bookImageSample@2x.png" alt="" class="homepage-cards-img">
-            <p class="homepage-cards-text">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</p>
-            <img src="/images/ratingSample@2x.png" alt="" class="homepage-cards-rating">
-          </div>
+          @if ($books)
+              @foreach ($books as $row)
+                <div class="homepage-cards-container">
+                <img src="{{asset('assets/uploaded_images/books')}}/{{$row->image}}" alt="" class="homepage-cards-img">
+                  <p class="homepage-cards-text">{{$row->title}}</p>
+                  <p class="homepage-cards-text">{{$row->author}}</p>
+                  <p class="homepage-cards-text">RM {{$row->retail_price}}</p>
+                  @if ($row -> quantity == 0)
+                          <button type="button" class="btn btn-secondary btn-sm" disabled>Out of Stock</button>
+                  @else
+                  <form action="{{ url('addtocart',$row->isbn) }}" method="POST">
+                    @csrf
+                    <button type='submit' class='btn btn-sm' style='background-color: #FD833B; color:#fff; border-color:transparent'><span style='margin-right:8px'><i class="fa-solid fa-cart-shopping"></i></span>Add to Cart</button>
+                  </form>
+                  @endif
+                </div>
+              @endforeach 
+          @else
+            <div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto'>
+              <h3>No book found in this category</h3>
+            </div>
+          @endif
         </div>
 
         <div class="homepage-review-main-container">
@@ -258,4 +120,7 @@
 
 <script src="js/carousel.js"></script>
 </body>
-</html>
+@endsection
+<script>
+  console.log($books)
+</script>

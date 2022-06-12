@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\MysteryComponent;
 use App\Http\Livewire\HorrorComponent;
@@ -8,10 +9,13 @@ use App\Http\Livewire\RomanceComponent;
 use App\Http\Livewire\ChildrenComponent;
 use App\Http\Livewire\SciFiComponent;
 use App\Http\Livewire\AdminAddBookComponent;
-
-/*php
+use App\Http\Livewire\AdminListBookComponent;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
+/*php
 
+
+/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -34,15 +38,13 @@ Route::get('/children', ChildrenComponent::class);
 
 Route::get('/sci-fi', SciFiComponent::class);
 
-Route::get('admin-addbook', AdminAddBookComponent::class)->name('addbook');
+Route::get('/admin-addbook', AdminAddBookComponent::class)->name('addbook');
+
+Route::get('/admin-listbook', AdminListBookComponent::class)->name('listbook');
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
-
-// Route::get('/home', function () {
-//     return view('home');
-// });
 
 Route::get('/', [UserController::class, 'home']);
 
@@ -59,4 +61,18 @@ Route::get('/logout', [UserController::class, 'logout']);
 
 Auth::routes();
 
+// Route::get('/cart', function () {
+//     return view('cart');
+// });
+
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'cart']);
+
+// Route::get('/home', function () {
+//     return view('home');
+// });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::post('addtocart/{isbn}', [CartController::class, 'addtocart']);
+Route::post('deletefromcart/{isbn}', [CartController::class, 'deletefromcart']);
+
+Route::post('editQty', [CartController::class, 'editQty']);

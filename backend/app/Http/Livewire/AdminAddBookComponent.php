@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Book;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -36,12 +38,12 @@ class AdminAddBookComponent extends Component
         $book->retail_price = $this->retail_price;
         $book->quantity = $this->quantity;
         $book->save();
-        
+
         session()->flash('message','Book Added Successfully');
     }
 
     public function render()
     {
-        return view('livewire.admin-add-book-component')->layout('pages.base');
+        return view('livewire.admin-add-book-component')->layout('layouts.base');
     }
 }
