@@ -9,6 +9,6 @@ class AdminListBookComponent extends Component
 {
     public function render()
     {
-        return view('livewire.admin-list-book-component',['books' => Book::all()])->layout('pages.base');
+        return view('livewire.admin-list-book-component',['books' => Book::all()])->layout('layouts.base');
     }
 }
