@@ -65,10 +65,14 @@
                         <h6 class='font-genre' style='font-size:25px; height:60px; color: #FFFFFF'>{{$row->title}}</h6>
                         <h6 class='font-genre' style='font-size:15px; color: #FFFFFF'>{{$row->author}}</h6>
                         <h6 class='font-genre' style='font-size:20px; color: #FFFFFF'>RM {{$row->retail_price}}</h6>
+                        @if ($row -> quantity == 0)
+                          <button type="submit" class="btn btn-secondary btn-sm" disabled>Out of Stock</button>
+                        @else
                         <form action="{{ url('addtocart',$row->isbn) }}" method="POST">
                           @csrf
                           <button type='submit' class='btn btn-sm' style='background-color: #3B89FD; color:#fff; border-color:transparent'><span style='margin-right:8px'><i class="fa-solid fa-cart-shopping"></i></span>Add to Cart</button>
                         </form>
+                        @endif
                       </div>
                     @endforeach 
                   @else
