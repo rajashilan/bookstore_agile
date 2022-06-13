@@ -58,43 +58,8 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/home">{{ __('Home') }}</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdownCategory" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ __('Categories') }}
-                                </a>
-
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownCategory">
-                                    <li>
-                                        <a class="dropdown-item" href="/horror">
-                                            Horror
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/mystery">
-                                            Mystery
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/romance">
-                                            Romance
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/adventure">
-                                            Adventure
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/sci-fi">
-                                            Sci-Fi
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/children">
-                                            Children
-                                        </a>
-                                    </li>
-                                </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/signup">{{ __('Books') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Sales') }}</a>
@@ -114,43 +79,8 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/home">{{ __('Home') }}</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdownCategory" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ __('Categories') }}
-                                </a>
-
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownCategory">
-                                    <li>
-                                        <a class="dropdown-item" href="/horror">
-                                            Horror
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/mystery">
-                                            Mystery
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/romance">
-                                            Romance
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/adventure">
-                                            Adventure
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/sci-fi">
-                                            Sci-Fi
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/children">
-                                            Children
-                                        </a>
-                                    </li>
-                                </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Books') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Sales') }}</a>
@@ -161,42 +91,24 @@
                                 </a>
                             </li>
                             @if ((Auth::user()->userType) == "admin")
-                                <li class="nav-item"><a class="nav-link" href="admin-listbook">View Stock</a></li>
+                                <li class="nav-item"><a class="nav-link" href="admin-addbook">Add Stock</a></li>
                             @endif 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Hi, {{ Auth::user()->name }}!
                                 </a>
 
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li style="text-align: center;">
-                                        <img style="margin: auto; margin-top: 0.5rem; margin-left: 0.5rem; margin-right: 0.5rem;" src="images/personIcon@2x.png" />
-                                    </li>
-                                        <!-- <li><hr class="dropdown-divider"></li> -->
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li>
-                                        <a class="dropdown-item">
-                                            Name: {{ Auth::user()->name }}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item">
-                                            Email: {{ Auth::user()->email }}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-                                    </li>
-                                    
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                </ul>
+                                </div>
                             </li>
                         @endguest
                     </ul>
@@ -207,35 +119,39 @@
         <div class="cart-container hidden" id="cart-container" >
             <div class="cart-header">
                 <img src="images/cartIcon@2x.png" alt="" class="cart-icon">
-                @if ($cartarray ?? '')
-                @if (count($cartarray ?? '') > 0)
-                <h3 class="cart-total">Total: {{count($cartarray ?? '')}} items</h3>
-                @else
-                <h3 class="cart-total">Total: 0 item</h3>
-                @endif
-                @else 
-                <h3 class="cart-total">Total: 0 item</h3>
-                @endif
+                <h3 class="cart-total">Total: 3 items</h3>
             </div>
             <hr>
-            @if ($cartarray ?? '')
-                @foreach ($cartarray ?? '' as $items)
             <div class="cart-items">
-                <img src="{{asset('assets/uploaded_images/books')}}/{{$items['book'][0] -> image}}" alt="" class="cart-item-img">
+                <img src="images/bookImageSample2.jpeg" alt="" class="cart-item-img">
                 <div class="cart-item-details-container">
-                <h3 class="cart-item-title">{{$items["book"][0] -> title}}</h3>
+                <h3 class="cart-item-title">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</h3>
                 <div class="cart-items-price-container">
-                <h4 class="cart-item-price">RM{{$items["book"][0] -> retail_price}}</h4>
-                <h4 class="cart-item-quantity">Quantity: {{$items['record'] -> quantity}}</h4>
+                <h4 class="cart-item-price">RM39.99</h4>
+                <h4 class="cart-item-quantity">Quantity: 1</h4>
                 </div>
                 </div>
             </div>
-            @endforeach
-            @else
-                <div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto'>
-                    <h3>No item found in cart! </h3>
+            <div class="cart-items">
+                <img src="images/bookImageSample2.jpeg" alt="" class="cart-item-img">
+                <div class="cart-item-details-container">
+                <h3 class="cart-item-title">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</h3>
+                <div class="cart-items-price-container">
+                <h4 class="cart-item-price">RM39.99</h4>
+                <h4 class="cart-item-quantity">Quantity: 1</h4>
                 </div>
-            @endif
+                </div>
+            </div>
+            <div class="cart-items">
+                <img src="images/bookImageSample2.jpeg" alt="" class="cart-item-img">
+                <div class="cart-item-details-container">
+                <h3 class="cart-item-title">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</h3>
+                <div class="cart-items-price-container">
+                <h4 class="cart-item-price">RM39.99</h4>
+                <h4 class="cart-item-quantity">Quantity: 1</h4>
+                </div>
+                </div>
+            </div>
             <a href="/cart" class="cart-button">View Cart</a>
         </div>
 
