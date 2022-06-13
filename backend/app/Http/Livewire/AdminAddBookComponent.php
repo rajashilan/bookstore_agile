@@ -19,27 +19,34 @@ class AdminAddBookComponent extends Component
     public $category;
     public $publication_date;
     public $image;
-    public $trade_price;
-    public $retail_price;
-    public $quantity;
+    public $trade_price = 1;
+    public $retail_price = 100;
+    public $quantity = 1;
 
     public function addBook(){
-        $book = new Book();
-        $book->title = $this->title;
-        $book->author = $this->author;
-        $book->isbn = $this->isbn;
-        $book->description = $this->description;
-        $book->category = $this->category;
-        $book->publication_date = $this->publication_date;
-        $imageName = Carbon::now()->timestamp. '.' . $this->image->extension();
-        $this->image->storeAs('books',$imageName);
-        $book->image = $imageName;
-        $book->trade_price = $this->trade_price;
-        $book->retail_price = $this->retail_price;
-        $book->quantity = $this->quantity;
-        $book->save();
 
-        session()->flash('message','Book Added Successfully');
+        $book = new Book();
+
+        if ($book->where('isbn', '=', $this->isbn)->count() > 0) {
+            session()->flash('err_message','ISBN Existed !!!');
+        }else{
+            $book->title = $this->title;
+            $book->author = $this->author;
+            $book->isbn = $this->isbn;
+            $book->description = $this->description;
+            $book->category = $this->category;
+            $book->publication_date = $this->publication_date;
+            $imageName = Carbon::now()->timestamp. '.' . $this->image->extension();
+            $this->image->storeAs('books',$imageName);
+            $book->image = $imageName;
+            $book->trade_price = $this->trade_price;
+            $book->retail_price = $this->retail_price;
+            $book->quantity = $this->quantity;
+            $book->save();
+            session()->flash('message','Book Added Successfully');
+            redirect('admin-addbook');
+        }
+
     }
 
     public function render()
