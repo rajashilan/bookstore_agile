@@ -1,0 +1,7 @@
+.slider{
+    display: flex;
+}
+
+.slider .value{
+    margin-left: 5px;
+}
