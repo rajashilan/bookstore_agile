@@ -56,7 +56,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="/home">{{ __('Home') }}</a>
+                                <a class="nav-link" href="/ ">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdownCategory" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
