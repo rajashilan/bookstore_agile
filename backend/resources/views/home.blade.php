@@ -80,7 +80,10 @@
           @if ($books)
               @foreach ($books as $row)
                 <div class="homepage-cards-container">
-                <img src="{{asset('assets/uploaded_images/books')}}/{{$row->image}}" alt="" class="homepage-cards-img">
+                  <a href="{{ url('detail',$row->isbn) }}" method="POST">
+                  @csrf
+                  <img src="{{asset('assets/uploaded_images/books')}}/{{$row->image}}" alt="" class="homepage-cards-img">
+                  </a>
                   <p class="homepage-cards-text">{{$row->title}}</p>
                   <p class="homepage-cards-text">{{$row->author}}</p>
                   <p class="homepage-cards-text">RM {{$row->retail_price}}</p>

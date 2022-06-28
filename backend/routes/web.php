@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\MysteryComponent;
 use App\Http\Livewire\HorrorComponent;
@@ -12,6 +13,7 @@ use App\Http\Livewire\AdminAddBookComponent;
 use App\Http\Livewire\AdminListBookComponent;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DetailComponent;
 /*php
 
 
@@ -42,6 +44,10 @@ Route::get('/admin-addbook', AdminAddBookComponent::class)->name('addbook');
 
 Route::get('/admin-listbook', AdminListBookComponent::class)->name('listbook');
 
+Route::get('/detail', function () {
+    return view('detail');
+});
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
@@ -67,6 +73,7 @@ Auth::routes();
 
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'cart']);
 
+
 // Route::get('/home', function () {
 //     return view('home');
 // });
@@ -74,5 +81,6 @@ Route::get('/cart', [App\Http\Controllers\CartController::class, 'cart']);
 
 Route::post('addtocart/{isbn}', [CartController::class, 'addtocart']);
 Route::post('deletefromcart/{isbn}', [CartController::class, 'deletefromcart']);
+Route::get('detail/{isbn}', [DetailController::class, 'detail']);
 
 Route::post('editQty', [CartController::class, 'editQty']);
