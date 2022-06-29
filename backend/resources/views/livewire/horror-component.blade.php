@@ -48,16 +48,9 @@
 
             <!-- book row -->
             <div class='row featured-row' style="padding-bottom:30px">
-              @if (Session::has('message'))
-                <div class="alert alert-success" style='margin-top: 20px;' role="alert">{{Session::get('message')}}</div>
-              @elseif (Session::has('login_message'))
-                <div class="alert alert-danger" style='margin-top: 20px;' role="alert">{{Session::get('login_message')}}</div>
-              @elseif (Session::has('cart_exist_msg'))
-                <div class="alert alert-warning" style='margin-top: 20px;' role="alert">{{Session::get('cart_exist_msg')}}</div>  
-              @endif
-                <div class='row row-cols-2 row-cols-lg-4 g-2 g-lg-4'>
+                <div class='row row-cols-2 row-cols-lg-4 g-2 g-lg-4' >
                   @if ($books)
-                    @foreach ($books as $row)
+                      @foreach ($books as $row)
                       <div style='text-align:center'>
                         <a href="{{ url('detail',$row->isbn) }}" method="POST">
                         @csrf
@@ -75,7 +68,7 @@
                         </form>
                         @endif
                       </div>
-                    @endforeach 
+                  @endforeach 
                   @else
                     <div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto'>
                       <h3>No book found in this category</h3>
