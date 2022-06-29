@@ -9,8 +9,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 @section('content')
+<div class="container">
 @if ($cartarray)
+    @php
+        $total = 0;
+    @endphp
     @foreach ($cartarray as $row)
+    @php
+        $total = $total + $row['record'] -> quantity * $row["book"][0] -> retail_price;
+    @endphp
     <div class="card mb-3" style="max-width: 1000px; margin: auto;">
         <div class="row g-0">
             <div class="col-md-2">
@@ -48,6 +55,20 @@
     </div>
 
     @endforeach
+    <div class="container">
+    <div class="row" style="width: 1000px; margin:auto">
+        <div class="col-md-8"></div>
+        <div class="col-md-4" style="padding: 0">
+            <div class="card card-body mt-3">
+                <h5>Grand Total:
+                    <span class="float-end"> RM {{$total}}</span>
+                </h5>
+                <a href="/checkout" class="btn btn-primary">Checkout</a>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
 @else
 <div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto'>
     <h3>No item found in cart! </h3>

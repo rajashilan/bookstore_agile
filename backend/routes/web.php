@@ -12,6 +12,7 @@ use App\Http\Livewire\AdminAddBookComponent;
 use App\Http\Livewire\AdminListBookComponent;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CheckoutController;
 /*php
 
 
@@ -76,3 +77,8 @@ Route::post('addtocart/{isbn}', [CartController::class, 'addtocart']);
 Route::post('deletefromcart/{isbn}', [CartController::class, 'deletefromcart']);
 
 Route::post('editQty', [CartController::class, 'editQty']);
+
+Route::get('checkout', [CheckoutController::class, 'checkout']);
+Route::post('placeOrder',[CheckoutController::class, 'placeorder']);
+Route::get('success', [CheckoutController::class, 'success']);
+Route::get('error', [CheckoutController::class, 'error']);
