@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\DB;
 
+use Auth;
 use App\Models\Book;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -51,6 +52,19 @@ class AdminAddBookComponent extends Component
 
     public function render()
     {
-        return view('livewire.admin-add-book-component')->layout('layouts.base');
+        if (!(Auth::user())) 
+        {
+            return view('auth.login')->layout('layouts.app');
+            
+        }
+        else{
+            if ((Auth::user()->userType) == "user"){
+                $books = Book::all();
+                return view('home',['books'=>$books])-> layout('layouts.app');
+            }
+            else{
+                return view('livewire.admin-add-book-component')->layout('layouts.base');
+            }
+        }
     }
 }
