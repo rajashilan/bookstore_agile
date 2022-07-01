@@ -27,12 +27,12 @@
                 <div class="card-body">
                     <h3 class="card-title">{{$row["book"][0] -> title}}</h3>
                     <div class="row mb-2">
-                        <div class="col">Unit Price</div>
+                        <div class="col-md-2">Unit Price</div>
                         <div class="col">{{$row["book"][0] -> retail_price}}</div>
                     </div>
-                    <div class="row mb-2">
-                        <div class="col">
-                            <label for="" style="vertical-align: -webkit-baseline-middle;"></label>
+                    <div class="row mb-2" style="display: flex; align-items: center;">
+                        <div class="col-md-2">
+                            <label for="">Quantity</label>
                         </div>
                         <div class="col">
                             <div class="btn-group me-2" role="group" aria-label="First group">
