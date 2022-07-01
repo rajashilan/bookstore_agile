@@ -12,6 +12,8 @@ use App\Http\Livewire\AdminAddBookComponent;
 use App\Http\Livewire\AdminListBookComponent;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Livewire\AdminEditBookComponent;
 /*php
 
 
@@ -41,6 +43,8 @@ Route::get('/sci-fi', SciFiComponent::class);
 Route::get('/admin-addbook', AdminAddBookComponent::class)->name('addbook');
 
 Route::get('/admin-listbook', AdminListBookComponent::class)->name('listbook');
+
+Route::get('/admin-editbook/{id}', AdminEditBookComponent::class)->name('editbook');
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -76,3 +80,8 @@ Route::post('addtocart/{isbn}', [CartController::class, 'addtocart']);
 Route::post('deletefromcart/{isbn}', [CartController::class, 'deletefromcart']);
 
 Route::post('editQty', [CartController::class, 'editQty']);
+
+Route::get('checkout', [CheckoutController::class, 'checkout']);
+Route::post('placeOrder',[CheckoutController::class, 'placeorder']);
+Route::get('success', [CheckoutController::class, 'success']);
+Route::get('error', [CheckoutController::class, 'error']);

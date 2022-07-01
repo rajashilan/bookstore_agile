@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Book;
+use App\Models\recently_viewed;
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 
 
 class CartController extends Controller
@@ -70,7 +72,19 @@ class CartController extends Controller
                 $cartdetails = compact("record", "book");
                 array_push($cartarray, $cartdetails);
             }
-            return view('cart',['cartarray'=>$cartarray])-> layout('layouts.app');
+
+            $getrecentlyviews = 
+            recently_viewed::
+            select(DB::raw('*, max(created_at) as created_at'))               
+            ->orderBy('created_at', 'desc')
+            ->groupBy('book_cat')
+            ->limit(3)
+            ->pluck('book_cat');
+
+            $basedonrecentlyviewed = Book::whereIn('category',$getrecentlyviews)
+            ->get();
+
+            return view('cart',['cartarray'=>$cartarray,'basedonrecentlyviewed'=>$basedonrecentlyviewed])-> layout('layouts.app');
         }
         else{
             return redirect()->back()->with('login_message','Please login to proceed!');

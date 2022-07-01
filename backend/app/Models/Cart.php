@@ -14,4 +14,10 @@ class Cart extends Model
         'isbn',
         'quantity'
     ];
+
+    protected $with =['book'];
+
+    public function book(){
+        return $this->belongsTo(Book::class, 'isbn', 'isbn');
+    }
 }

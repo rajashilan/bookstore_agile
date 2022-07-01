@@ -1,3 +1,4 @@
+
 <div>
     <div class='container-fluid px-4'>
         <div class="container">
@@ -54,7 +55,7 @@
                             <div class='form-group mb-3 col-md-4'>
                                 <label>Image</label>
                                 <input type='file' accept="image/*" name="image" class='form-control' wire:model.defer="image" />
-                                @if ($image)
+                                @if ($image == '1')
                                     <img src="{{$image->temporaryUrl()}}" width="120" />
                                 @endif
                             </div>
@@ -84,7 +85,7 @@
                             </div>
                         </div>
                         <div style="text-align: center">
-                            <button id="btnSubmitAddBook" type='submit' class='btn btn-primary px-4 mt-2'>Submit</button>
+                            <button id="btnSubmitAddBook" name="btnSubmitAddBook" type='submit' class='btn btn-primary px-4 mt-2'>Submit</button>
                         </div>
                     </form>
                 </div>

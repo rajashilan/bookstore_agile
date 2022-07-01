@@ -101,6 +101,43 @@
           @endif
         </div>
 
+
+        @auth
+        <h1 class="homepage-title-text">You might also like</h1>
+        @if (Session::has('message'))
+          <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+        @elseif (Session::has('login_message'))
+          <div class="alert alert-danger" role="alert">{{Session::get('login_message')}}</div>
+        @elseif (Session::has('cart_exist_msg'))
+          <div class="alert alert-warning" role="alert">{{Session::get('cart_exist_msg')}}</div>  
+        @endif
+        <div class="homepage-cards-main-container">
+          @if ($basedonrecentlyviewed)
+              @foreach ($basedonrecentlyviewed as $row)
+                <div class="homepage-cards-container">
+                <img src="{{asset('assets/uploaded_images/books')}}/{{$row->image}}" alt="" class="homepage-cards-img">
+                  <p class="homepage-cards-text">{{$row->title}}</p>
+                  <p class="homepage-cards-text">{{$row->author}}</p>
+                  <p class="homepage-cards-text">RM {{$row->retail_price}}</p>
+                  @if ($row -> quantity == 0)
+                          <button type="button" class="btn btn-secondary btn-sm" disabled>Out of Stock</button>
+                  @else
+                  <form action="{{ url('addtocart',$row->isbn) }}" method="POST">
+                    @csrf
+                    <button type='submit' class='btn btn-sm' style='background-color: #FD833B; color:#fff; border-color:transparent'><span style='margin-right:8px'><i class="fa-solid fa-cart-shopping"></i></span>Add to Cart</button>
+                  </form>
+                  @endif
+                </div>
+              @endforeach 
+          @else
+            <div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto'>
+              <h3>No Suggestion available</h3>
+            </div>
+          @endif
+        </div>
+
+        @endauth
+
         <div class="homepage-review-main-container">
           <div class="homepage-review-container">
             <div class="homepage-review-items-container">
