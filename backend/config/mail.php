@@ -35,9 +35,14 @@ return [
 
     'mailers' => [
         'smtp' => [
+            'driver' => 'sendmail',
             'transport' => 'smtp',
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
             'port' => env('MAIL_PORT', 587),
+            'from' => [
+                'address' => 'b-bii3817792317@personal.example.com', 
+                'name' => 'Your Title'
+            ],
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
