@@ -15,12 +15,15 @@ class Order extends Model
         'email',
         'address',
         'payment_id',
+        'country',
+        'deliverycharges',
+        'grandtotal',
         'payment_mode',
         'tracking_num',
         'status',
         'remark',
     ];
-
+    
     public function orderitems(){
         return $this->hasMany(OrderItems::class, 'order_id', 'id');
     }

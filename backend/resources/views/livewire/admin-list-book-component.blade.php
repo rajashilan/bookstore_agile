@@ -40,7 +40,7 @@
                                 <td>{{ $val->retail_price }}</td>
                                 <td>{{ $val->category }}</td>
                                 <td>{{ $val->publication_date }}</td>
-                                <td></td>
+                                <td><a href="/admin-editbook/{{$val->isbn}}"><i class="fas fa-edit"></i></a></td>
                             </tr>
                             @php
                                 $xCount++;

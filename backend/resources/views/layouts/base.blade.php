@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -47,7 +48,7 @@
                             type="text"
                                 placeholder="Search your Books..."
                             />
-                            <img class="search-icon" src="/images/searchIcon@2x.png" alt="">
+                            <img class="search-icon" src="{{ asset('/images/searchIcon@2x.png') }}" alt="">
                         </div>
                     </ul>
 
@@ -157,7 +158,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href='javascript:;' onclick='show_cart();' class="navbar-icons-link" >
-                                    <img style="margin: auto; margin-top: 0.5rem; margin-left: 0.5rem; margin-right: 0.5rem;" src="images/cartIcon@2x.png" class="navbar-icons" />
+                                    <img style="margin: auto; margin-top: 0.5rem; margin-left: 0.5rem; margin-right: 0.5rem;" src="{{ asset('images/cartIcon@2x.png') }}" class="navbar-icons" />
                                 </a>
                             </li>
                             @if ((Auth::user()->userType) == "admin")
@@ -170,7 +171,7 @@
 
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li style="text-align: center;">
-                                        <img style="margin: auto; margin-top: 0.5rem; margin-left: 0.5rem; margin-right: 0.5rem;" src="images/personIcon@2x.png" />
+                                        <img style="margin: auto; margin-top: 0.5rem; margin-left: 0.5rem; margin-right: 0.5rem;" src="{{ asset('images/personIcon@2x.png') }}" />
                                     </li>
                                         <!-- <li><hr class="dropdown-divider"></li> -->
                                     <li><hr class="dropdown-divider"></li>

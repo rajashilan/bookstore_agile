@@ -1,4 +1,3 @@
-
 <div>
     <div class='container-fluid px-4'>
         <div class="container">
@@ -18,7 +17,7 @@
                     @if (Session::has('loginmessage'))
                     <div class="alert alert-danger" role="alert">{{Session::get('loginmessage')}}</div>
                     @endif
-                    <form encType='multipart/form-data' wire:submit.prevent="addBook">
+                    <form encType='multipart/form-data' wire:submit.prevent="editBook">
                         <div class="row">
                             <div class='form-group mb-3 col-md-6'>
                                 <label>Book Title</label>
@@ -55,9 +54,11 @@
                             <div class='form-group mb-3 col-md-4'>
                                 <label>Image</label>
                                 <input type='file' accept="image/*" name="image" class='form-control' wire:model.defer="image" />
-                                @if ($image == '1')
+                                @if ($image)
                                     <img src="{{$image->temporaryUrl()}}" width="120" />
                                 @endif
+                                <br>
+                                <b>Existing Image: </b><a target="blank" href="{{asset('assets/uploaded_images/books').'/'.$book->image}}">{{ $book->image }}</a>
                             </div>
                             <div class='form-group mb-3 col-md-4'>
                                 <label for="trade" class="form-label">Trade Price</label>
@@ -85,7 +86,7 @@
                             </div>
                         </div>
                         <div style="text-align: center">
-                            <button id="btnSubmitAddBook" name="btnSubmitAddBook" type='submit' class='btn btn-primary px-4 mt-2'>Submit</button>
+                            <button id="btnSubmitEditBook" type='submit' class='btn btn-primary px-4 mt-2'>Submit</button>
                         </div>
                     </form>
                 </div>

@@ -15,6 +15,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DetailComponent;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Livewire\AdminEditBookComponent;
 /*php
 
 
@@ -48,6 +49,7 @@ Route::get('/admin-listbook', AdminListBookComponent::class)->name('listbook');
 Route::get('/detail', function () {
     return view('detail');
 });
+Route::get('/admin-editbook/{id}', AdminEditBookComponent::class)->name('editbook');
 
 Route::get('/welcome', function () {
     return view('welcome');

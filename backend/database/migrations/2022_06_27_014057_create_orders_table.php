@@ -21,6 +21,11 @@ class CreateOrdersTable extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('payment_id')->nullable();
+
+            $table->string('country');
+            $table->float('deliverycharges', 8, 2);
+            $table->float('grandtotal', 8, 2);
+  
             $table->string('payment_mode');
             $table->string('tracking_num');
             $table->tinyInteger('status')->default('0');

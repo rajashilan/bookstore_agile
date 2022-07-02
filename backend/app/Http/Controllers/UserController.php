@@ -7,6 +7,7 @@ use DB;
 use Auth;
 use App\Models\Book;
 use App\Models\Cart;
+use App\Models\recently_viewed;
 
 class UserController extends Controller
 {
@@ -33,8 +34,22 @@ class UserController extends Controller
                 $cartdetails = compact("record", "book");
                 array_push($cartarray, $cartdetails);
             }
+
+
             $books = Book::all();
-            return view('home', compact('userType', 'userName', 'books', 'cartarray'))->layout('layouts.app');
+
+            $getrecentlyviews = 
+            recently_viewed::
+            select(DB::raw('*, max(created_at) as created_at'))               
+            ->orderBy('created_at', 'desc')
+            ->groupBy('book_cat')
+            ->limit(3)
+            ->pluck('book_cat');
+
+            $basedonrecentlyviewed = Book::whereIn('category',$getrecentlyviews)
+            ->get();
+
+            return view('home', compact('userType', 'userName', 'books', 'cartarray','basedonrecentlyviewed'))->layout('layouts.app');
         }
         else{
             return redirect()->back()->with('login_message','Please login to proceed!');
@@ -68,8 +83,30 @@ class UserController extends Controller
                 $cartdetails = compact("record", "book");
                 array_push($cartarray, $cartdetails);
             }
+
+            $getrecentlyviews = 
+            recently_viewed::
+            select(DB::raw('*, max(created_at) as created_at'))               
+            ->orderBy('created_at', 'desc')
+            ->groupBy('book_cat')
+            ->limit(3)
+            ->pluck('book_cat');
+
+         
+
+
+            $basedonrecentlyviewed = Book::whereIn('category',$getrecentlyviews)
+          
+            ->get();
+                            
+
+         
+
+
+          
+
             $books = Book::all();
-            return view('home', compact('userType', 'userName', 'books', 'cartarray'))->layout('layouts.app');
+            return view('home', compact('userType', 'userName', 'books', 'cartarray','basedonrecentlyviewed'))->layout('layouts.app');
         }
         else{
             $books = Book::all();

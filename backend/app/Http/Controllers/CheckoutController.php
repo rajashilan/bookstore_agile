@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Book;
 use App\Models\Order;
+use App\Models\Country;
 use Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -40,7 +41,10 @@ class CheckoutController extends Controller
                 $cartdetails = compact("record", "book");
                 array_push($cartarray, $cartdetails);
             }
-            return view('checkout',['cartarray'=>$cartarray])-> layout('layouts.app');
+
+            $countries = Country::all();
+
+            return view('checkout',['cartarray'=>$cartarray,'countries' => $countries])-> layout('layouts.app');
         }
         else{
             return redirect('login');
@@ -54,6 +58,7 @@ class CheckoutController extends Controller
                     $validator = Validator::make($request->all(), [
                         'fullname' => 'required|max:191',
                         'phone' => 'required|max:191',
+                        'country' => 'required',
                         'email' => 'required|email|max:191',
                         'address' => 'required|max:191'
                     ]);
@@ -63,12 +68,34 @@ class CheckoutController extends Controller
                     }
                     else{
                         $user_id = Auth::user()->id;
+                        $getcountry = Country::where('country_code',$request->country)->first();
+                        $getisbns = Cart::where('user_id', $user_id)->get();
+
+                        
+                        $gettotalamount = 0;
+
+                        foreach($getisbns as $getisbn){
+
+                        $getprice =  Book::where('isbn', $getisbn->isbn)->first();
+                       
+                        $gettotalamount+= $getprice->retail_price * $getisbn->quantity;
+                        }
+
+                        
+
+                        $grandtotal = $getcountry->delivery_charges + $gettotalamount;
+                        
+                   
+                        
                         $order = new Order();
                         $order->user_id = $user_id;
                         $order->fullname = $request->fullname;
                         $order->phone = $request->phone;
                         $order->email = $request->email;
                         $order->address = $request->address;
+                        $order->country = $request->country;
+                        $order->deliverycharges = $getcountry->delivery_charges;
+                        $order->grandtotal = $grandtotal;
                         $order->payment_mode = $request->payment_mode;
                         $order->payment_id = $request->payment_id;
                         $order->tracking_num = 'bookshop'.rand(10000,99999);
@@ -115,15 +142,38 @@ class CheckoutController extends Controller
                     }
                     else{
                         $user_id = Auth::user()->id;
+                        $getcountry = Country::where('country_code',$request->country)->first();
+                        $getisbns = Cart::where('user_id', $user_id)->get();
+
+                        
+                        $gettotalamount = 0;
+
+                        foreach($getisbns as $getisbn){
+
+                        $getprice =  Book::where('isbn', $getisbn->isbn)->first();
+                       
+                        $gettotalamount+= $getprice->retail_price * $getisbn->quantity;
+                        }
+
+                        $grandtotal = $getcountry->delivery_charges + $gettotalamount;
+
+
                         $cart = Cart::where('user_id', $user_id)->get();
-                        $amount = 0;
+                        $amount = $grandtotal ;
                         Session::put('fullname', $request->fullname);
                         Session::put('phone', $request->phone);
                         Session::put('email', $request->email);
                         Session::put('address', $request->address);
                         Session::put('payment_mode', $request->payment_mode);
 
+                        Session::put('country', $request->country);
+                        Session::put('deliverycharges', $getcountry->delivery_charges);
+                        Session::put('grandtotal', $grandtotal);
+
+
                         $order_items = [];
+
+                        /*
                         foreach($cart as $item){
                             //$order_items[] = [
                               //  'isbn'=>$item->isbn,
@@ -137,6 +187,7 @@ class CheckoutController extends Controller
 
                             $amount = $item->quantity * $item->book->retail_price;
                         }
+                        */
 
                         $response = $this->gateway->purchase(array(
                             'amount' => $amount, 
@@ -183,6 +234,9 @@ class CheckoutController extends Controller
                 $order->email = Session::get('email');
                 $order->address = Session::get('address');
                 $order->payment_mode = Session::get('payment_mode');
+                $order->country =Session::get('country');
+                $order->deliverycharges = Session::get('deliverycharges');
+                $order->grandtotal = Session::get('grandtotal');
                 $order->payment_id = $arr_body['id'];
                 $order->tracking_num = 'bookshop'.rand(10000,99999);
                 $order->save();

@@ -28,24 +28,36 @@ class AdminAddBookComponent extends Component
 
         $book = new Book();
 
+       
+
         if ($book->where('isbn', '=', $this->isbn)->count() > 0) {
             session()->flash('err_message','ISBN Existed !!!');
-        }else{
+        }
+        else if( $this->trade_price >  $this->retail_price){
+        
+            session()->flash('err_message','Trade price cannot be more than Retail Price !!!');
+           
+
+        }
+        else{
             $book->title = $this->title;
             $book->author = $this->author;
             $book->isbn = $this->isbn;
             $book->description = $this->description;
             $book->category = $this->category;
             $book->publication_date = $this->publication_date;
+
+            if($this->image != ''){
             $imageName = Carbon::now()->timestamp. '.' . $this->image->extension();
             $this->image->storeAs('books',$imageName);
             $book->image = $imageName;
+            }
             $book->trade_price = $this->trade_price;
             $book->retail_price = $this->retail_price;
             $book->quantity = $this->quantity;
             $book->save();
             session()->flash('message','Book Added Successfully');
-            redirect('admin-addbook');
+            redirect('admin-addbook',422);
         }
 
     }
