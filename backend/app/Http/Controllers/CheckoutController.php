@@ -190,7 +190,7 @@ class CheckoutController extends Controller
                         */
 
                         $response = $this->gateway->purchase(array(
-                            'amount' => $amount, 
+                            'amount' => $amount*0.24, 
                             'currency' => env('PAYPAL_CURRENCY'),
                             'returnUrl' => url('success'),
                             'cancelUrl' => url('error'),

@@ -107,13 +107,7 @@
 
         @auth
         <h1 class="homepage-title-text">You might also like</h1>
-        @if (Session::has('message'))
-          <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
-        @elseif (Session::has('login_message'))
-          <div class="alert alert-danger" role="alert">{{Session::get('login_message')}}</div>
-        @elseif (Session::has('cart_exist_msg'))
-          <div class="alert alert-warning" role="alert">{{Session::get('cart_exist_msg')}}</div>  
-        @endif
+        
         <div class="homepage-cards-main-container">
           @if ($basedonrecentlyviewed)
               @foreach ($basedonrecentlyviewed as $row)
