@@ -11,9 +11,9 @@
 @section('content')
 <div class="container">
 <div class="row" style="margin-bottom: 2rem;">
-    <div class="col btn btn-outline-primary" style="display: flex; justify-content: center; border-radius: 0;" id="showCart">Cart</div>
-    <!-- <div class="col btn btn-outline-primary" style="display: flex; justify-content: center; border-radius: 0;" id="showOrder">Ongoing Order</div> -->
-    <div class="col btn btn-outline-primary" style="display: flex; justify-content: center; border-radius: 0;" id="showHistory">History</div>
+    <div class="col btn btn-outline-secondary" style="display: flex; justify-content: center; border-radius: 0;" id="showCart">Cart</div>
+    <!-- <div class="col btn btn-outline-secondary" style="display: flex; justify-content: center; border-radius: 0;" id="showOrder">Ongoing Order</div> -->
+    <div class="col btn btn-outline-secondary" style="display: flex; justify-content: center; border-radius: 0;" id="showHistory">History</div>
 </div>
 @if ($cartarray)
     @php
