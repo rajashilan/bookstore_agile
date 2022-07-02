@@ -10,6 +10,11 @@
 
 @section('content')
 <div class="container">
+<div class="row" style="margin-bottom: 2rem;">
+    <div class="col btn btn-outline-primary" style="display: flex; justify-content: center; border-radius: 0;" id="showCart">Cart</div>
+    <!-- <div class="col btn btn-outline-primary" style="display: flex; justify-content: center; border-radius: 0;" id="showOrder">Ongoing Order</div> -->
+    <div class="col btn btn-outline-primary" style="display: flex; justify-content: center; border-radius: 0;" id="showHistory">History</div>
+</div>
 @if ($cartarray)
     @php
         $total = 0;
@@ -18,7 +23,7 @@
     @php
         $total = $total + $row['record'] -> quantity * $row["book"][0] -> retail_price;
     @endphp
-    <div class="card mb-3" style="max-width: 1000px; margin: auto;">
+    <div class="card mb-3" style="max-width: 1000px; margin: auto;" name="cart">
         <div class="row g-0">
             <div class="col-md-2">
                 <img src="{{asset('assets/uploaded_images/books')}}/{{$row['book'][0] -> image}}" class="img-fluid rounded-start">
@@ -40,7 +45,6 @@
                                 <input id="{{$row['record'] -> id}}" type=number min=1 max=100 class="form-control" value="{{$row['record'] -> quantity}}" style="text-align: center; border-radius: 0px !important;" readonly>
                                 <input id="{{$row['book'][0] -> isbn}}" type="text" value="{{$row['book'][0] -> isbn}}" style="display: none;">
                                 <button id="btnIncrease{{$row['record'] -> id}}" type=button onclick="increment(this.id)" class="btn btn-outline-primary">+</button>
-                                
                             </div>
                         </div>
                     </div>
@@ -48,14 +52,13 @@
                         @csrf
                         <button type="submit" class="btn btn-danger mb-2">Delete From Cart</button>
                     </form>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </div>
         </div>
     </div>
-
     @endforeach
-    <div class="container">
+
+    <div class="container" name="cart">
     <div class="row" style="width: 1000px; margin:auto">
         <div class="col-md-8"></div>
         <div class="col-md-4" style="padding: 0">
@@ -70,7 +73,7 @@
     </div>
 </div>
 @else
-<div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto'>
+<div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto' name="cart">
     <h3>No item found in cart! </h3>
 </div>
 @endif
@@ -108,9 +111,110 @@
           @endif
         </div>
 
+<!-- @if ($orderarray)
+    @php
+        $total = 0;
+    @endphp
+    @foreach ($orderarray as $row)
+    @php
+        $total = $total + $row['record'] -> quantity * $row["book"][0] -> retail_price;
+    @endphp
+    <div class="card mb-3" style="max-width: 1000px; margin: auto;" name="order">
+        <div class="row g-0">
+            <div class="col-md-2">
+                <img src="{{asset('assets/uploaded_images/books')}}/{{$row['book'][0] -> image}}" class="img-fluid rounded-start">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title">{{$row["book"][0] -> title}}</h3>
+                    <div class="row mb-2">
+                        <div class="col-md-2">Unit Price</div>
+                        <div class="col">{{$row["book"][0] -> retail_price}}</div>
+                    </div>
+                    <div class="row mb-2" style="display: flex; align-items: center;">
+                        <div class="col-md-2">
+                            <label for="">Quantity</label>
+                        </div>
+                        <div class="col">
+                            <label for="">{{$row['record'] -> qty}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+@else
+<div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto' name="order">
+    <h3>No ongoing orders! </h3>
+</div>
+@endif -->
+
+@if ($orderarray)
+    @php
+        $total = 0;
+    @endphp
+    @foreach ($orderarray as $row)
+    @php
+        $total = $total + $row['record'] -> quantity * $row["book"][0] -> retail_price;
+    @endphp
+    <div class="card mb-3" style="max-width: 1000px; margin: auto;" name="history">
+        <div class="row g-0">
+            <div class="col-md-2">
+                <img src="{{asset('assets/uploaded_images/books')}}/{{$row['book'][0] -> image}}" class="img-fluid rounded-start">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title">{{$row["book"][0] -> title}}</h3>
+                    <div class="row mb-2">
+                        <div class="col-md-2">Unit Price</div>
+                        <div class="col">{{$row["book"][0] -> retail_price}}</div>
+                    </div>
+                    <div class="row mb-2" style="display: flex; align-items: center;">
+                        <div class="col-md-2">
+                            <label for="">Quantity</label>
+                        </div>
+                        <div class="col">
+                            <label for="">{{$row['record'] -> qty}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+@else
+<div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto' name="history">
+    <h3>No order history found! </h3>
+</div>
+@endif
+
+    
 
 
 <script>
+    $(document).ready((e) => {
+        $("#showCart").click()
+    })
+
+    $("#showCart").on('click', (e) => {
+        $("[name='cart']").css("display", "block")
+        $("[name='order']").css("display", "none")
+        $("[name='history']").css("display", "none")
+    })
+
+    $("#showOrder").on('click', (e) => {
+        $("[name='cart']").css("display", "none")
+        $("[name='order']").css("display", "block")
+        $("[name='history']").css("display", "none")
+    })
+
+    $("#showHistory").on('click', (e) => {
+        $("[name='cart']").css("display", "none")
+        $("[name='order']").css("display", "none")
+        $("[name='history']").css("display", "block")
+    })
+
     $("#demoInput").on('keydown keyup change', function (e){
         if (e.shiftKey || e.ctrlKey || e.altKey) {
 		e.preventDefault();
@@ -134,8 +238,6 @@
         var quantity = $("#" + inputid).val()
         var isbn = $("#" + id).prev().val()
         editQty(isbn, inputid, quantity, id)
-        // console.log($("#" + inputid).val())
-        //console.log(isbn)
     }
     function decrement(id) {
         var inputid = id.replace("btnDecrease", "")
@@ -146,8 +248,6 @@
             var isbn = $("#" + id).next().next().val()
             editQty(isbn, inputid, quantity, id)
         }
-        //console.log($("#" + inputid).val())
-        //console.log(isbn)
     }
 
     function editQty(isbn, id, quantity, btnid){
@@ -168,9 +268,6 @@
                 if (data.qtynew == 0){
                     $("#"+btnid).prop("disabled", true);
                 }
-                // else{
-                //     $("#"+btnid).prop("disabled", false);
-                // }
                 else if(data.cartbookqty == 1){
                     $("#"+btnid).prop("disabled", true);
                     
@@ -179,9 +276,6 @@
                     $("#btnIncrease"+id).prop("disabled", false);
                     $("#btnDecrease"+id).prop("disabled", false);
                 }
-                // else{
-                //     $("#"+btnid).removeAttr('disabled');
-                // }
             }
         })
     }

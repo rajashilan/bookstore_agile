@@ -15,6 +15,7 @@ class CreateOrderitemsTable extends Migration
     {
         Schema::create('orderitems', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->integer('order_id');
             $table->string('isbn');
             $table->integer('qty');

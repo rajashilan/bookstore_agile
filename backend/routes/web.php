@@ -77,6 +77,7 @@ Auth::routes();
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'cart']);
 Route::get('/update-profile', [App\Http\Controllers\UpdateProfileController::class, 'updateProfile']);
 Route::post('updateDetails', [App\Http\Controllers\UpdateProfileController::class, 'updateDetails']);
+Route::post('/home','HomeController@profileUpdate')->name('profileupdate');
 
 
 // Route::get('/home', function () {
