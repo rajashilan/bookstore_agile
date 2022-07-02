@@ -79,6 +79,7 @@ class CheckoutController extends Controller
                         $order_items = [];
                         foreach($cart as $item){
                             $order_items[] = [
+                                'user_id'=>$user_id,
                                 'isbn'=>$item->isbn,
                                 'qty'=>$item->quantity,
                                 'price'=>$item->book->retail_price
@@ -190,6 +191,7 @@ class CheckoutController extends Controller
                 $order_items = [];
                 foreach($cart as $item){
                     $order_items[] = [
+                        'user_id'=>$user_id,
                         'isbn'=>$item->isbn,
                         'qty'=>$item->quantity,
                         'price'=>$item->book->retail_price

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Order;
+use App\Models\OrderItems;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Auth;
@@ -56,9 +58,11 @@ class CartController extends Controller
 
         if(Auth::user()) {
             $cartarray = array();
+            $orderarray = array();
             $id = Auth::user()->id;
 
             $cart = Cart::where('user_id', $id)->get();
+            $orderitems = OrderItems::where('user_id', $id)->get();
 
             if ($cart == null || $cart == ""){
                 return redirect()->back()->with('message','No item found in cart!');
@@ -70,7 +74,20 @@ class CartController extends Controller
                 $cartdetails = compact("record", "book");
                 array_push($cartarray, $cartdetails);
             }
-            return view('cart',['cartarray'=>$cartarray])-> layout('layouts.app');
+
+            if ($orderitems == null || $orderitems == ""){
+                return redirect()->back()->with('message','No item found in cart!');
+            }
+
+            foreach($orderitems as $record){
+                $isbn = $record->isbn;
+                $book = Book::where('isbn', $isbn)->get();
+                $orderdetails = compact("record", "book");
+                array_push($orderarray, $orderdetails);
+            }
+
+
+            return view('cart') -> with('cartarray', $cartarray) -> with('orderarray', $orderarray) -> layout('layouts.app');
         }
         else{
             return redirect()->back()->with('login_message','Please login to proceed!');
