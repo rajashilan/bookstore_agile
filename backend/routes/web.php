@@ -9,7 +9,9 @@ use App\Http\Livewire\RomanceComponent;
 use App\Http\Livewire\ChildrenComponent;
 use App\Http\Livewire\SciFiComponent;
 use App\Http\Livewire\AdminAddBookComponent;
+
 use App\Http\Livewire\AdminListBookComponent;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckoutController;
@@ -65,15 +67,16 @@ Route::get('/logout', [UserController::class, 'logout']);
 
 Auth::routes();
 
-// Route::get('/cart', function () {
-//     return view('cart');
-// });
 
-Route::get('/cart', [App\Http\Controllers\CartController::class, 'cart']);
+Route::get('/cart', function () {
+    return view('cart');
+});
 
 // Route::get('/home', function () {
 //     return view('home');
 // });
+
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('addtocart/{isbn}', [CartController::class, 'addtocart']);
