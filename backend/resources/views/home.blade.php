@@ -65,7 +65,14 @@
               </a>
             </div>
           </div>
-          <a href="#" class="homepage-categories-link">See all</a>
+                    <div class="homepage-categories-container">
+            <div class="homepage-categories-item-container">
+              <a class="homepage-categories-link-img" href="/children">
+              <img src="/images/scifiIcon@2x.png" alt="" class="homepage-categories-icon">
+              <p class="homepage-categories-text">Children</p>
+              </a>
+            </div>
+          </div>
         </div>
 
         <h1 class="homepage-title-text">Featured</h1>

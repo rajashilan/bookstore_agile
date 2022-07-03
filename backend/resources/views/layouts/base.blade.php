@@ -97,9 +97,6 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Sales') }}</a>
-                            </li>
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -152,9 +149,6 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Sales') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a href='javascript:;' onclick='show_cart();' class="navbar-icons-link" >

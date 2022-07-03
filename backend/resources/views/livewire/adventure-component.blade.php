@@ -1,10 +1,10 @@
 <div>
-    <div class='container-fluid' style="background-image: url('{{ asset('assets/images/adventure.jpg') }}'); background-repeat:no-repeat; background-size:cover">
+    <div class='container-fluid'>
         <div class='container' style="padding-top:30px">
             <div class='row'>
                 <div class='col-md-4'>
-                    <div class='genre-box' style="background: linear-gradient(135deg, rgba(255,150,0,1),rgba(255,150,0,1), rgba(255,150,0,0)); border:5px solid #000; border-radius:20px">
-                        <h1 class='font-genre' style="color: #000; text-align: center; font-size:40px">Adventure</h1>
+                    <div class='genre-box'>
+                        <h1 class='font-genre' style="color: #000; text-align: left; font-size:40px">Adventure</h1>
                     </div>
                     <p class='font-genre' style="font-size:20px">Discover the best adventure books and action stories for adults, teens and kids. </p>
                 </div>
