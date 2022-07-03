@@ -65,7 +65,14 @@
               </a>
             </div>
           </div>
-          <a href="#" class="homepage-categories-link">See all</a>
+                    <div class="homepage-categories-container">
+            <div class="homepage-categories-item-container">
+              <a class="homepage-categories-link-img" href="/children">
+              <img src="/images/scifiIcon@2x.png" alt="" class="homepage-categories-icon">
+              <p class="homepage-categories-text">Children</p>
+              </a>
+            </div>
+          </div>
         </div>
 
         <h1 class="homepage-title-text">Featured</h1>
@@ -80,7 +87,10 @@
           @if ($books)
               @foreach ($books as $row)
                 <div class="homepage-cards-container">
-                <img src="{{asset('assets/uploaded_images/books')}}/{{$row->image}}" alt="" class="homepage-cards-img">
+                  <a href="{{ url('detail',$row->isbn) }}" method="POST">
+                  @csrf
+                  <img src="{{asset('assets/uploaded_images/books')}}/{{$row->image}}" alt="" class="homepage-cards-img">
+                  </a>
                   <p class="homepage-cards-text">{{$row->title}}</p>
                   <p class="homepage-cards-text">{{$row->author}}</p>
                   <p class="homepage-cards-text">RM {{$row->retail_price}}</p>
@@ -104,13 +114,7 @@
 
         @auth
         <h1 class="homepage-title-text">You might also like</h1>
-        @if (Session::has('message'))
-          <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
-        @elseif (Session::has('login_message'))
-          <div class="alert alert-danger" role="alert">{{Session::get('login_message')}}</div>
-        @elseif (Session::has('cart_exist_msg'))
-          <div class="alert alert-warning" role="alert">{{Session::get('cart_exist_msg')}}</div>  
-        @endif
+        
         <div class="homepage-cards-main-container">
           @if ($basedonrecentlyviewed)
               @foreach ($basedonrecentlyviewed as $row)

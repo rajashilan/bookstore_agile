@@ -1,10 +1,10 @@
 <div>
-    <div class='container-fluid' style="background-image: url('{{ asset('assets/images/sci-fi.jpg') }}'); background-repeat:no-repeat; background-size:cover">
+    <div class='container-fluid'>
         <div class='container' style="padding-top:30px">
             <div class='row'>
                 <div class='col-md-4'>
-                    <div class='genre-box' style="background: linear-gradient(135deg, rgba(10,0,104,1),rgba(38,0,123,1), rgba(66,0,141,0.8),rgba(255,255,255,0)); border:5px solid #fff; border-radius:20px">
-                        <h1 class='font-genre' style="color: #fff; text-align: center; font-size:40px">Sci-Fi</h1>
+                    <div class='genre-box'>
+                        <h1 class='font-genre' style="color: #fff; text-align: left; font-size:40px">Sci-Fi</h1>
                     </div>
                     <p class='font-genre' style="font-size:20px; color:#fff">Discover the best science fiction books for adults, teens and kids. </p>
                 </div>

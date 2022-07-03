@@ -1,10 +1,10 @@
 <div>
-    <div class='container-fluid' style="background-image: url('{{ asset('assets/images/children.jpg') }}'); background-repeat:no-repeat; background-size:cover">
+    <div class='container-fluid'>
         <div class='container' style="padding-top:30px">
             <div class='row'>
                 <div class='col-md-4'>
-                    <div class='genre-box' style="background: linear-gradient(135deg, rgba(255,154,162,1),rgba(255,183,178,1),rgba(255,218,193,1), rgba(226,240,203,1), rgba(181,234,215,0.9), rgba(199,206,234,0.8)); border:5px solid #000; border-radius:20px">
-                        <h1 class='font-genre' style="color: #000; text-align: center; font-size:40px">Children</h1>
+                    <div class='genre-box‘>
+                        <h1 class='font-genre' style="color: #000; text-align: left; font-size:40px">Children</h1>
                     </div>
                     <p class='font-genre' style="font-size:20px">Discover the best storybooks for kids. </p>
                 </div>

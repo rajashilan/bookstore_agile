@@ -106,6 +106,7 @@ class CheckoutController extends Controller
                         $order_items = [];
                         foreach($cart as $item){
                             $order_items[] = [
+                                'user_id'=>$user_id,
                                 'isbn'=>$item->isbn,
                                 'qty'=>$item->quantity,
                                 'price'=>$item->book->retail_price
@@ -190,7 +191,7 @@ class CheckoutController extends Controller
                         */
 
                         $response = $this->gateway->purchase(array(
-                            'amount' => $amount, 
+                            'amount' => $amount*0.24, 
                             'currency' => env('PAYPAL_CURRENCY'),
                             'returnUrl' => url('success'),
                             'cancelUrl' => url('error'),
@@ -244,6 +245,7 @@ class CheckoutController extends Controller
                 $order_items = [];
                 foreach($cart as $item){
                     $order_items[] = [
+                        'user_id'=>$user_id,
                         'isbn'=>$item->isbn,
                         'qty'=>$item->quantity,
                         'price'=>$item->book->retail_price

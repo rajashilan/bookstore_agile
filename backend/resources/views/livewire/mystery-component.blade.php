@@ -49,19 +49,29 @@
             </div>
 
             <!-- book row -->
-            <div class='row featured-row' style="padding-bottom:30px">
+            <div class='row featured-row' style="padding-bottom:30px; margin-top:20px">
+              @if (Session::has('message'))
+                <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+              @elseif (Session::has('login_message'))
+                <div class="alert alert-danger" role="alert">{{Session::get('login_message')}}</div>
+              @elseif (Session::has('cart_exist_msg'))
+                <div class="alert alert-warning" role="alert">{{Session::get('cart_exist_msg')}}</div>  
+              @endif
                 <div class='row row-cols-2 row-cols-lg-4 g-2 g-lg-4' >
                   @if ($books)
                       @foreach ($books as $row)
                       <div style='text-align:center'>
+                        <a href="{{ url('detail',$row->isbn) }}" method="POST">
+                        @csrf
                         <img src="{{asset('assets/uploaded_images/books')}}/{{$row->image}}" style='display:block; margin:auto; width:200px; height:250px; border-radius:20px' />
+                        </a>
                         <h6 class='font-genre' style='font-size:25px; height:60px; color: #FFFFFF'>{{$row->title}}</h6>
                         <h6 class='font-genre' style='font-size:15px; color: #FFFFFF'>{{$row->author}}</h6>
                         <h6 class='font-genre' style='font-size:20px; color: #FFFFFF'>RM {{$row->retail_price}}</h6>
                         @if ($row -> quantity == 0)
                           <button type="submit" class="btn btn-secondary btn-sm" disabled>Out of Stock</button>
                         @else
-                        <form action="{{ url('addtocart',$row->isbn) }}" method="POST">
+                          <form action="{{ url('addtocart',$row->isbn) }}" method="POST">
                           @csrf
                           <button type='submit' class='btn btn-sm' style='background-color: #3B89FD; color:#fff; border-color:transparent'><span style='margin-right:8px'><i class="fa-solid fa-cart-shopping"></i></span>Add to Cart</button>
                         </form>

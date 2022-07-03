@@ -85,7 +85,6 @@
                     </div>
                 </div>
             </div>
-
             <div class='col-md-5'>
                 <table class='table table-bordered'>
                     <thead>
@@ -262,7 +261,5 @@ console.log( "ready!" );
     </div>
     @endif
 </div>
-
-
 
 @endsection
