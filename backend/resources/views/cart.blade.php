@@ -111,7 +111,7 @@
           @endif
         </div>
 
-<!-- @if ($orderarray)
+{{-- <!-- @if ($orderarray)
     @php
         $total = 0;
     @endphp
@@ -148,7 +148,7 @@
 <div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto' name="order">
     <h3>No ongoing orders! </h3>
 </div>
-@endif -->
+@endif --> --}}
 
 @if ($orderarray)
     @php
@@ -267,9 +267,11 @@
                 console.log(data.cartbookqty)
                 if (data.qtynew == 0){
                     $("#"+btnid).prop("disabled", true);
+                    $("#btnDecrease"+id).prop("disabled", false);
                 }
                 else if(data.cartbookqty == 1){
                     $("#"+btnid).prop("disabled", true);
+                    $("#btnIncrease"+id).prop("disabled", false);
                     
                 }
                 else{

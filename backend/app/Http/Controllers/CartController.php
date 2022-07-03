@@ -100,7 +100,7 @@ class CartController extends Controller
                 array_push($orderarray, $orderdetails);
             }
 
-
+            dd($cartarray);
             return view('cart') -> with('cartarray', $cartarray) -> with('orderarray', $orderarray) -> layout('layouts.app');
         }
         else{
