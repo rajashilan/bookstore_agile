@@ -16,6 +16,7 @@ use App\Http\Livewire\AdminListBookComponent;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\DetailComponent;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Livewire\AdminEditBookComponent;
@@ -99,3 +100,5 @@ Route::get('checkout', [CheckoutController::class, 'checkout']);
 Route::post('placeOrder',[CheckoutController::class, 'placeorder']);
 Route::get('success', [CheckoutController::class, 'success']);
 Route::get('error', [CheckoutController::class, 'error']);
+
+Route::post('leavereview/{isbn}', [ReviewController::class, 'newReview']);

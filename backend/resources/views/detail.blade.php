@@ -38,6 +38,30 @@
                 </div>
             </div>
         </div>
+        <form action="{{ url('leavereview',$book->isbn) }}" method="POST">
+            @csrf
+                <div class="p-2 bd-highlight" style="width: 50%; margin-top: 2rem;">
+                <h5>Leave a review for {{$book->title}}</h5>
+                <textarea name="review" id="review" rows="3" class="form-control"></textarea>
+                <button type='submit' class='btn btn-lg' style='background-color: #3B89FD; color:#fff; border-color:transparent; 
+                margin:center; width: 100%; padding: 10px; border-align: center; margin-top: 1rem;'>
+                Submit</button>
+        </form>
+        <div class="bd-highlight">
+            <div style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid grey; margin-top: 2rem;">
+            <h4>User Reviews</h4>
+            <hr>
+            @if (!$reviews->isEmpty())
+            @foreach ($reviews as $review)
+            <p style="margin-bottom: 0; font-size: 18px;">{{$review->review}}</p>
+            <p>-{{$review->name}}</p>
+            @endforeach
+            @else
+            <p style="margin-bottom: 0; font-size: 18px;">No reviews yet. Leave a new review!</p>
+            @endif
+        </div>
+        </div>
+        </div>
     </div>
 @endsection
 </div>
