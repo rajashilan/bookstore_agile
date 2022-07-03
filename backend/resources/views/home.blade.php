@@ -65,7 +65,14 @@
               </a>
             </div>
           </div>
-          <a href="#" class="homepage-categories-link">See all</a>
+                    <div class="homepage-categories-container">
+            <div class="homepage-categories-item-container">
+              <a class="homepage-categories-link-img" href="/children">
+              <img src="/images/scifiIcon@2x.png" alt="" class="homepage-categories-icon">
+              <p class="homepage-categories-text">Children</p>
+              </a>
+            </div>
+          </div>
         </div>
 
         <h1 class="homepage-title-text">Featured</h1>
@@ -80,14 +87,21 @@
           @if ($books)
               @foreach ($books as $row)
                 <div class="homepage-cards-container">
-                <img src="{{asset('assets/uploaded_images/books')}}/{{$row->image}}" alt="" class="homepage-cards-img">
+                  <a href="{{ url('detail',$row->isbn) }}" method="POST">
+                  @csrf
+                  <img src="{{asset('assets/uploaded_images/books')}}/{{$row->image}}" alt="" class="homepage-cards-img">
+                  </a>
                   <p class="homepage-cards-text">{{$row->title}}</p>
                   <p class="homepage-cards-text">{{$row->author}}</p>
                   <p class="homepage-cards-text">RM {{$row->retail_price}}</p>
+                  @if ($row -> quantity == 0)
+                          <button type="button" class="btn btn-secondary btn-sm" disabled>Out of Stock</button>
+                  @else
                   <form action="{{ url('addtocart',$row->isbn) }}" method="POST">
                     @csrf
                     <button type='submit' class='btn btn-sm' style='background-color: #FD833B; color:#fff; border-color:transparent'><span style='margin-right:8px'><i class="fa-solid fa-cart-shopping"></i></span>Add to Cart</button>
                   </form>
+                  @endif
                 </div>
               @endforeach 
           @else
@@ -96,6 +110,37 @@
             </div>
           @endif
         </div>
+
+
+        @auth
+        <h1 class="homepage-title-text">You might also like</h1>
+        
+        <div class="homepage-cards-main-container">
+          @if ($basedonrecentlyviewed)
+              @foreach ($basedonrecentlyviewed as $row)
+                <div class="homepage-cards-container">
+                <img src="{{asset('assets/uploaded_images/books')}}/{{$row->image}}" alt="" class="homepage-cards-img">
+                  <p class="homepage-cards-text">{{$row->title}}</p>
+                  <p class="homepage-cards-text">{{$row->author}}</p>
+                  <p class="homepage-cards-text">RM {{$row->retail_price}}</p>
+                  @if ($row -> quantity == 0)
+                          <button type="button" class="btn btn-secondary btn-sm" disabled>Out of Stock</button>
+                  @else
+                  <form action="{{ url('addtocart',$row->isbn) }}" method="POST">
+                    @csrf
+                    <button type='submit' class='btn btn-sm' style='background-color: #FD833B; color:#fff; border-color:transparent'><span style='margin-right:8px'><i class="fa-solid fa-cart-shopping"></i></span>Add to Cart</button>
+                  </form>
+                  @endif
+                </div>
+              @endforeach 
+          @else
+            <div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto'>
+              <h3>No Suggestion available</h3>
+            </div>
+          @endif
+        </div>
+
+        @endauth
 
         <div class="homepage-review-main-container">
           <div class="homepage-review-container">

@@ -19,17 +19,24 @@ class AddCartTest extends TestCase
         $cart = Cart::factory()->create([
             'id' => 100,
             'user_id' => 3,
-            'isbn' => "9781665922074",
+            'isbn' => "9780590353403",
             'quantity' => 1
         ]);
 
-        $response = $this->followingRedirects()->post('addtocart/9781665922074');
+        $cart1 = Cart::factory()->create([
+            'id' => 99,
+            'user_id' => 2,
+            'isbn' => "9780590353403",
+            'quantity' => 1
+        ]);
+
+        $response = $this->followingRedirects()->post('addtocart/9780590353403');
         $response->assertOk();
     }
 
     public function test_visitor_could_not_add_book_to_cart()
     {
-            $response = $this->post('addtocart/9781665922074');
+            $response = $this->post('addtocart/9780590353403');
             $response->assertRedirect('/');        
     }
 }

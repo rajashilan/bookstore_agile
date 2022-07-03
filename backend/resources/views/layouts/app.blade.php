@@ -56,7 +56,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="/home">{{ __('Home') }}</a>
+                                <a class="nav-link" href="/">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdownCategory" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -89,10 +89,12 @@
                                             Sci-Fi
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/children">
+                                            Children
+                                        </a>
+                                    </li>
                                 </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Sales') }}</a>
                             </li>
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -107,7 +109,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="/home">{{ __('Home') }}</a>
+                                <a class="nav-link" href="/">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdownCategory" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -140,10 +142,12 @@
                                             Sci-Fi
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/children">
+                                            Children
+                                        </a>
+                                    </li>
                                 </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Sales') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a href='javascript:;' onclick='show_cart();' class="navbar-icons-link" >
@@ -151,7 +155,7 @@
                                 </a>
                             </li>
                             @if ((Auth::user()->userType) == "admin")
-                                <li class="nav-item"><a class="nav-link" href="admin-addbook">Add Stock</a></li>
+                                <li class="nav-item"><a class="nav-link" href="admin-listbook">View Stock</a></li>
                             @endif 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -172,6 +176,11 @@
                                     <li>
                                         <a class="dropdown-item">
                                             Email: {{ Auth::user()->email }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/update-profile">
+                                            Update Profile
                                         </a>
                                     </li>
                                     <li>

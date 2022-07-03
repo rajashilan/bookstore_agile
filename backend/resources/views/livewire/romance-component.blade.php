@@ -1,10 +1,10 @@
 <div>
-    <div class='container-fluid' style="background-image: url('{{ asset('assets/images/romance.jpg') }}'); background-repeat:no-repeat; background-size:cover">
+    <div class='container-fluid'>
         <div class='container' style="padding-top:30px">
             <div class='row'>
                 <div class='col-md-4'>
-                    <div class='genre-box' style="background: linear-gradient(135deg, rgba(229,106,179,1),rgba(239,135,190,1), rgba(249,163,203,1),rgba(252,188,215,0.8),rgba(255,206,230,0)); border:5px solid #000; border-radius:20px">
-                        <h1 class='font-genre' style="color: #000; text-align: center; font-size:40px">Romance</h1>
+                    <div class='genre-box'>
+                        <h1 class='font-genre' style="color: #000; text-align: left; font-size:40px">Romance</h1>
                     </div>
                     <p class='font-genre' style="font-size:20px">Discover the best romance books of all time. </p>
                 </div>
