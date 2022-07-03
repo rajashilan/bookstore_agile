@@ -21,7 +21,8 @@ class AdventureComponent extends Component
             'updated_at' => Carbon::now(),
 
         ]);
-        }
+    }
+        
         return view('livewire.adventure-component',['books'=>$books])-> layout('layouts.base');
     }
 }

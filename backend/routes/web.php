@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\MysteryComponent;
 use App\Http\Livewire\HorrorComponent;
@@ -14,6 +15,8 @@ use App\Http\Livewire\AdminListBookComponent;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\DetailComponent;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Livewire\AdminEditBookComponent;
 /*php
@@ -46,6 +49,9 @@ Route::get('/admin-addbook', AdminAddBookComponent::class)->name('addbook');
 
 Route::get('/admin-listbook', AdminListBookComponent::class)->name('listbook');
 
+Route::get('/detail', function () {
+    return view('detail');
+});
 Route::get('/admin-editbook/{id}', AdminEditBookComponent::class)->name('editbook');
 
 Route::get('/welcome', function () {
@@ -68,9 +74,12 @@ Route::get('/logout', [UserController::class, 'logout']);
 Auth::routes();
 
 
-Route::get('/cart', function () {
-    return view('cart');
-});
+
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'cart']);
+Route::get('/update-profile', [App\Http\Controllers\UpdateProfileController::class, 'updateProfile']);
+Route::post('updateDetails', [App\Http\Controllers\UpdateProfileController::class, 'updateDetails']);
+Route::post('/home','HomeController@profileUpdate')->name('profileupdate');
+
 
 // Route::get('/home', function () {
 //     return view('home');
@@ -81,6 +90,7 @@ Route::get('/cart', function () {
 
 Route::post('addtocart/{isbn}', [CartController::class, 'addtocart']);
 Route::post('deletefromcart/{isbn}', [CartController::class, 'deletefromcart']);
+Route::get('detail/{isbn}', [DetailController::class, 'detail']);
 
 Route::post('editQty', [CartController::class, 'editQty']);
 
@@ -88,3 +98,5 @@ Route::get('checkout', [CheckoutController::class, 'checkout']);
 Route::post('placeOrder',[CheckoutController::class, 'placeorder']);
 Route::get('success', [CheckoutController::class, 'success']);
 Route::get('error', [CheckoutController::class, 'error']);
+
+Route::post('leavereview/{isbn}', [ReviewController::class, 'newReview']);
