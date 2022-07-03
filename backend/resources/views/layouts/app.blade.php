@@ -151,7 +151,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href='javascript:;' onclick='show_cart();' class="navbar-icons-link" >
-                                    <img style="margin: auto; margin-top: 0.5rem; margin-left: 0.5rem; margin-right: 0.5rem;" src="images/cartIcon@2x.png" class="navbar-icons" />
+                                    <img style="margin: auto; margin-top: 0.5rem; margin-left: 0.5rem; margin-right: 0.5rem;" src="http://127.0.0.1:8000/images/cartIcon@2x.png" class="navbar-icons" />
                                 </a>
                             </li>
                             @if ((Auth::user()->userType) == "admin")
@@ -205,7 +205,7 @@
 
         <div class="cart-container hidden" id="cart-container" >
             <div class="cart-header">
-                <img src="images/cartIcon@2x.png" alt="" class="cart-icon">
+                <img src="http://127.0.0.1:8000/images/cartIcon@2x.png" alt="" class="cart-icon">
                 @if ($cartarray ?? '')
                 @if (count($cartarray ?? '') > 0)
                 <h3 class="cart-total">Total: {{count($cartarray ?? '')}} items</h3>

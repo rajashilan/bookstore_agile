@@ -1,30 +1,18 @@
 <div>
-  <style>
-    body {
-    background-image: url('assets/HorrorBackground.jpg');
-    background-size: 100%;
-    background-position: 100%;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    }
-  </style>
-
-        <div class='container' style="padding-top:30px">
+<div class='container-fluid' style="background-repeat:no-repeat; background-size:cover">
+    <div class='container' style="padding-top:30px">
             <div class='row'>
                 <!-- genre -->
-                <div class='col-md-3'>
-                    <div class='genre-box' style="background: linear-gradient(102.28deg, #FF9600 48.42%, rgba(255, 150, 0, 0) 96.84%); border: 5px solid #000000; border-radius:10px">
-                      <h1 class='font-genre' style="color: #000000; text-align: center; font-size:40px; font-family: 'Nerko One'; line-height: 65px;">Horror</h1>
-                    </div>
-
-                <!-- intro -->
-                <div class="col py-3">
-                  <h5 class="#000000">Discover the best horror books and scary stories for adults, teens and kids.</h5> 
-                </div>
+                <div class='col-md-4'>
+                  <div class='genre-box' style="border:5px solid #000; border-radius:20px">
+                    <h1 class='font-genre' style="color: #000; text-align: center; font-size:40px">Horror</h1>
+                  </div>
+                  <p class='font-genre' style="font-size:20px">Uncover and dive deep in the Mystery Fiction and all its subgenres, 
+                    including Detective, Crime and Thrillers.</p>
                 </div>
                 
                 <!-- carousel -->
-                <div class='col-md-9'>
+                <div class='col-md-8'>
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
                           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -83,8 +71,8 @@
                   @endif             
                 </div>
             </div>
-        </div>
     </div>
+  </div>
 </div>
 
 
