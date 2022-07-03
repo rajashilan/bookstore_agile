@@ -9,8 +9,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 @section('content')
+<div class="container">
 @if ($cartarray)
+    @php
+        $total = 0;
+    @endphp
     @foreach ($cartarray as $row)
+    @php
+        $total = $total + $row['record'] -> quantity * $row["book"][0] -> retail_price;
+    @endphp
     <div class="card mb-3" style="max-width: 1000px; margin: auto;">
         <div class="row g-0">
             <div class="col-md-2">
@@ -48,11 +55,59 @@
     </div>
 
     @endforeach
+    <div class="container">
+    <div class="row" style="width: 1000px; margin:auto">
+        <div class="col-md-8"></div>
+        <div class="col-md-4" style="padding: 0">
+            <div class="card card-body mt-3">
+                <h5>Grand Total:
+                    <span class="float-end"> RM {{$total}}</span>
+                </h5>
+                <a href="/checkout" class="btn btn-primary">Checkout</a>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
 @else
 <div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto'>
     <h3>No item found in cart! </h3>
 </div>
 @endif
+
+<h1 class="homepage-title-text">You might also like</h1>
+        @if (Session::has('message'))
+          <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+        @elseif (Session::has('login_message'))
+          <div class="alert alert-danger" role="alert">{{Session::get('login_message')}}</div>
+        @elseif (Session::has('cart_exist_msg'))
+          <div class="alert alert-warning" role="alert">{{Session::get('cart_exist_msg')}}</div>  
+        @endif
+        <div class="homepage-cards-main-container">
+          @if ($basedonrecentlyviewed)
+              @foreach ($basedonrecentlyviewed as $row)
+                <div class="homepage-cards-container">
+                <img src="{{asset('assets/uploaded_images/books')}}/{{$row->image}}" alt="" class="homepage-cards-img">
+                  <p class="homepage-cards-text">{{$row->title}}</p>
+                  <p class="homepage-cards-text">{{$row->author}}</p>
+                  <p class="homepage-cards-text">RM {{$row->retail_price}}</p>
+                  @if ($row -> quantity == 0)
+                          <button type="button" class="btn btn-secondary btn-sm" disabled>Out of Stock</button>
+                  @else
+                  <form action="{{ url('addtocart',$row->isbn) }}" method="POST">
+                    @csrf
+                    <button type='submit' class='btn btn-sm' style='background-color: #FD833B; color:#fff; border-color:transparent'><span style='margin-right:8px'><i class="fa-solid fa-cart-shopping"></i></span>Add to Cart</button>
+                  </form>
+                  @endif
+                </div>
+              @endforeach 
+          @else
+            <div class="card" style='text-align:center;padding: 5% 3%; margin:20% auto'>
+              <h3>No Suggestion available</h3>
+            </div>
+          @endif
+        </div>
+
 
 
 <script>
