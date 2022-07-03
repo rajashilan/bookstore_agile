@@ -88,7 +88,7 @@ class CartController extends Controller
             $basedonrecentlyviewed = Book::whereIn('category',$getrecentlyviews)
             ->get();
 
-            return view('cart',['cartarray'=>$cartarray,'basedonrecentlyviewed'=>$basedonrecentlyviewed])-> layout('layouts.app');
+           // return view('cart',['cartarray'=>$cartarray,'basedonrecentlyviewed'=>$basedonrecentlyviewed, 'orderarray'=>$orderarray])-> layout('layouts.app');
             if ($orderitems == null || $orderitems == ""){
                 return redirect()->back()->with('message','No item found in cart!');
             }
@@ -100,8 +100,8 @@ class CartController extends Controller
                 array_push($orderarray, $orderdetails);
             }
 
-            dd($cartarray);
-            return view('cart') -> with('cartarray', $cartarray) -> with('orderarray', $orderarray) -> layout('layouts.app');
+
+            return view('cart') -> with('cartarray', $cartarray) -> with('basedonrecentlyviewed', $basedonrecentlyviewed) -> with('orderarray', $orderarray) -> layout('layouts.app');
         }
         else{
             return redirect()->back()->with('login_message','Please login to proceed!');
