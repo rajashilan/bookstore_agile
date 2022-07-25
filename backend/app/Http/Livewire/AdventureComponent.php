@@ -16,7 +16,7 @@ class AdventureComponent extends Component
         if(count($books) > 1){
         recently_viewed::Insert([
             'book_cat' => "Adventure",
-            'viewed_by' => auth()->user()->id,
+            // 'viewed_by' => auth()->user()->id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
 

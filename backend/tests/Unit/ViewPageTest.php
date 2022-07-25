@@ -12,12 +12,12 @@ class ViewPageTest extends TestCase
      *
      * @return void
      */
-    // public function test_view_adventure_category()
-    // {
-    //     $response = $this->withoutExceptionHandling();
-    //     $response = $this->get('adventure');
-    //     $response->assertOk();
-    // }
+    public function test_view_adventure_category()
+    {
+        $response = $this->withoutExceptionHandling();
+        $response = $this->get('adventure');
+        $response->assertOk();
+    }
 
     public function test_view_children_category()
     {
